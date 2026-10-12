@@ -1,6 +1,6 @@
 # NeuroNook Privacy Policy
 
-_Last updated: September 29, 2026_
+_Last updated: October 12, 2026_
 
 NeuroNook is a private mental-wellness journal. This policy describes exactly what
 the app does with your information - which is, almost entirely, nothing beyond
@@ -12,8 +12,10 @@ Everything you record in NeuroNook - daily check-in answers, wellness scores,
 journal notes, and custom questions - is stored only on your device, protected by
 iOS file encryption tied to your device passcode.
 
-NeuroNook has **no accounts, no analytics, no ads, no tracking, and no third-party
-SDKs**. Nothing you enter is ever transmitted off your device by the app.
+NeuroNook has **no accounts, no ads, and no tracking**. Nothing you enter is ever
+transmitted off your device by the app. The only other times the app goes online
+are the optional Live Weather feature and the service that manages optional
+Plus purchases, both explained below.
 
 ## What the app stores (on device only)
 
@@ -48,16 +50,24 @@ Weather, and the app links to Apple's page listing its other data sources.
 Reminders and supportive notifications are generated and scheduled entirely on
 your device. No notification content or behavior is sent anywhere.
 
-## Subscriptions
+## Purchases
 
-NeuroNook Plus is an optional subscription sold through the App Store. Apple
+NeuroNook Plus is an optional purchase sold through the App Store: a
+subscription or a one-time lifetime unlock. Apple
 processes the payment with your Apple Account, so NeuroNook never receives your
 name, email address, or payment details.
 
-To know whether Plus is on, the app reads the purchase record Apple keeps on your
-device. When you subscribe or restore a purchase, the App Store confirms it with
-Apple's servers. Your check-ins, journal notes, and scores are never part of that.
-Apple's handling of purchases is covered by Apple's own privacy policy.
+To manage purchases, the app uses RevenueCat, a service that confirms
+purchases with Apple and tells the app whether Plus is on. The app contacts
+RevenueCat when it opens and when you view the Plus offer, buy Plus, or restore a
+purchase. RevenueCat sees a random ID it creates for this install, your NeuroNook
+purchase history (which plan, when, and whether it renews), your device's vendor
+ID and model, your iOS and app versions, your language and App Store country and,
+as with any internet request, your IP address. It uses these to confirm purchases
+and to count purchases and trials. Your check-ins, journal notes, and scores are
+never part of that. RevenueCat is not used for ads or tracking, and its handling
+of data is covered by its own privacy policy. Apple's handling of purchases is
+covered by Apple's own privacy policy.
 
 ## Sharing you control
 
@@ -67,8 +77,9 @@ is entirely up to you.
 
 ## Deleting your data
 
-You can erase everything at any time in the app under **Settings → Data
-Management**. Deleting the app also deletes all of its data.
+You can erase everything stored on your device at any time in the app under
+**Settings → Data Management**. Deleting the app does the same. RevenueCat keeps
+its own anonymous purchase record, which neither action removes.
 
 ## Children
 
