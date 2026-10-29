@@ -7,6 +7,7 @@
   --wash:#edf1df;
   --focus:#944117;
   --white:#fff;
+  --ease-out:cubic-bezier(.23,1,.32,1);
   --font:ui-rounded,'SF Pro Rounded',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 }
 * {
@@ -69,6 +70,7 @@ img {
 }
 .wordmark {
   display:flex;
+  min-height:44px;
   gap:10px;
   align-items:center;
   font-size:1.35rem;
@@ -82,9 +84,12 @@ img {
 nav {
   display:flex;
   flex-wrap:wrap;
-  gap:8px 24px;
+  gap:4px 20px;
 }
 nav a {
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
   white-space:nowrap;
   font-size:.93rem;
   padding-block:8px;
@@ -104,6 +109,7 @@ h1,h2,h3 {
   letter-spacing:-.045em;
   overflow-wrap:anywhere;
   font-style:normal;
+  text-wrap:balance;
 }
 h1 {
   font-size:clamp(2.75rem,6.3vw,5rem);
@@ -160,18 +166,20 @@ h3 {
   margin-top:12px;
 }
 .hero-shot {
-  width:min(280px,100%);
+  width:min(248px,100%);
   margin:0 auto;
-  transform:rotate(2deg);
+}
+.hero-shot img {
+  transform:rotate(1deg);
 }
 figure img {
   border:1px solid var(--line);
   border-radius:10px;
 }
 figcaption {
-  font-size:.85rem;
+  font-size:.9rem;
   color:var(--muted);
-  margin-top:14px;
+  margin-top:18px;
   line-height:1.5;
 }
 .hero-shot figcaption {
@@ -242,7 +250,7 @@ figcaption {
   color:var(--ink);
 }
 .legal {
-  font-size:.75rem;
+  font-size:.8125rem;
   max-width:470px;
   margin-top:16px!important;
 }
@@ -342,8 +350,16 @@ figcaption {
     padding-block:64px;
   }
 }
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
+  .store-link:not(:focus-visible) {
+    transition:transform 140ms var(--ease-out);
+  }
+  .store-link:active:not(:focus-visible) {
+    transform:scale(.97);
+  }
+}
 @media(prefers-reduced-motion:reduce) {
-  .hero-shot {
+  .hero-shot img {
     transform:none;
   }
 }
