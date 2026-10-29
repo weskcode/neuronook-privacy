@@ -2,7 +2,7 @@ title: NeuroNook
 redirects_enabled: true
 exclude:
   - src
-  - legacy
+  - legacy/**
   - node_modules
   - package.json
   - package-lock.json
