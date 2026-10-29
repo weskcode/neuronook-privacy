@@ -53,7 +53,7 @@ References: [Eleventy on Cloudflare Pages](https://developers.cloudflare.com/pag
 ## Edit content
 
 - Landing page: `src/index.njk`; shared styles: `src/assets/site.css`.
-- Privacy and support: `src/privacy/index.md`, `src/support/index.md`. Their Markdown bodies match the preserved originals in `legacy/`. The support page's relative privacy link is updated to `/privacy/` during rendering, without changing its words.
+- Privacy and support: `src/privacy/index.md`, `src/support/index.md`. The support body matches its preserved original in `legacy/`. The privacy body includes the approved October 29 correction to the Children section so it reflects both weather and purchase-management requests; the original policy remains archived in `legacy/`. The support page's relative privacy link is updated to `/privacy/` during rendering, without changing its words.
 - Blog: add Markdown files in `src/blog/posts/` with `title`, `description`, and `date` front matter. The directory data supplies the layout, collection, and URL. The index, RSS summaries, and sitemap update on build. The welcome entry is explicitly a placeholder.
 - Changelog: `src/changelog.md`. It has no invented app version history.
 - Shared metadata: `src/_includes/base.njk` and `src/_data/site.json`.
