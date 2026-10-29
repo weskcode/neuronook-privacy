@@ -1,3 +1,9 @@
+---
+layout: legacy
+title: NeuroNook Privacy Policy
+redirect_target: https://neuronook.app/privacy/
+---
+
 # NeuroNook Privacy Policy
 
 _Last updated: October 12, 2026_

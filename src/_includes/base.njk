@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title | escape }}{% if title != site.name %} | {{ site.name }}{% endif %}</title>
+  <meta name="description" content="{{ description | escape }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="{% if isPost %}article{% else %}website{% endif %}">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ title | escape }}">
+  <meta property="og:description" content="{{ description | escape }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}/assets/social.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A neighborhood built from daily check-ins in NeuroNook">
+  <meta name="apple-itunes-app" content="app-id=6745560129">
+  {% if noindex %}<meta name="robots" content="noindex">{% endif %}
+  <link rel="icon" href="/assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="alternate" type="application/rss+xml" title="NeuroNook notes" href="/feed.xml">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="/" aria-label="NeuroNook home"><img src="/assets/favicon.png" alt="" width="36" height="36">NeuroNook</a>
+    <nav aria-label="Main navigation">
+      {% for label, href in [['Privacy', '/privacy/'], ['Support', '/support/'], ['Blog', '/blog/'], ['Changelog', '/changelog/']] %}
+      <a href="{{ href }}"{% if page.url == href or (href == '/blog/' and isPost) %} aria-current="page"{% endif %}>{{ label }}</a>
+      {% endfor %}
+    </nav>
+  </header>
+  <main id="main" class="wrap{% if not home %} document{% endif %}" tabindex="-1">{{ content | safe }}</main>
+  <footer class="site-footer wrap">
+    <p class="footer-note">A small daily check-in.<br><strong>A neighborhood of your own.</strong></p>
+    <div><p>This website has no analytics, cookies, or third-party assets.</p>
+    <nav aria-label="Footer navigation"><a href="/privacy/">Privacy</a><a href="/support/">Support</a><a href="/feed.xml">RSS</a></nav>
+    <p class="legal">Apple and the Apple logo are trademarks of Apple Inc. App Store is a service mark of Apple Inc.</p></div>
+  </footer>
+</body>
+</html>
