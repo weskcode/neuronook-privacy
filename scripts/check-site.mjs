@@ -49,10 +49,11 @@ for (const [file, destination, original] of [['index.md', 'privacy', 'privacy-or
   assert(legacy.includes(`redirect_target: https://neuronook.app/${destination}/`));
   assert.equal(legacy.split('---\n\n').slice(1).join('---\n\n'), destination === 'privacy' ? approvedPolicy : await read(`legacy/${original}`), 'legacy fallback must match the approved policy or original support text');
 }
+assert((await read('_config.yml')).includes('  - legacy/**\n'), 'exclude archived contents without hiding the legacy.html layout');
 const legacyLayout = await read('_layouts/legacy.html');
 assert(legacyLayout.includes('{% if site.redirects_enabled %}<meta http-equiv="refresh" content="0; url={{ page.redirect_target }}">'));
 assert(legacyLayout.includes('rel="canonical" href="{{ page.redirect_target }}"'));
-assert((await read('_config.yml')).includes('redirects_enabled: false'), 'keep old pages live until the new domain is verified');
+assert((await read('_config.yml')).includes('redirects_enabled: true'), 'legacy redirects must stay enabled after domain activation');
 for (const route of ['privacy', 'support']) {
   const html = await read(`_site/${route}/index.html`);
   assert(html.includes('href="mailto:weskcode@duck.com"') && html.includes('>weskcode@duck.com</a>'), 'support email must remain visible and usable');

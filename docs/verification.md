@@ -32,3 +32,11 @@ The 404 template intentionally has `noindex` and is excluded from the sitemap. L
 No Pages project, custom domain, DNS, TLS, email, or zone settings were changed in Phase 1. Live Cloudflare behavior, DNSSEC, HTTPS response headers, injection controls, mail forwarding, www/HTTP redirects, post-launch Lighthouse, and activation of the legacy redirects remain for the authorized launch phase.
 
 The iOS screenshot-build attempt was stopped after a coordinator identified a quarantined simulator conflict. No new screenshot from that attempt is used. Its own hold evidence was copied and hash-verified separately; simulator recovery remains with the owning coordinator. No further iOS build or device action forms part of these website checks.
+
+## Legacy redirect activation follow-up
+
+The Phase 1 results above are historical. The new privacy and support pages are now live on `https://neuronook.app`, and their post-deployment header, script, cookie and request checks pass. This activation branch enables the legacy redirect switch after that verification.
+
+The real GitHub Pages build revealed that excluding `legacy` also excluded `_layouts/legacy.html`, because Jekyll 3.10 uses a prefix match. The exclusion is now `legacy/**`: archived policy files stay excluded while the layout stays available. Source-level reproduction and independent review confirm the fix; a full local Jekyll build is unavailable.
+
+After the owner approves merging this activation PR, verify that the GitHub Pages build has no missing-layout warning and that the old root and `/support/` each contain the expected meta refresh, canonical URL and preserved fallback text.
