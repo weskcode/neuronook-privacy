@@ -1,3 +1,9 @@
+---
+layout: legacy
+title: NeuroNook support
+redirect_target: https://neuronook.app/support/
+---
+
 # NeuroNook support
 
 Email [weskcode@duck.com](mailto:weskcode@duck.com) if you need help or want to report a bug. If something is not working, include your iPhone model and iOS version.

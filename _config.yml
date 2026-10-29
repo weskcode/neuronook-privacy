@@ -1,2 +1,13 @@
 title: NeuroNook
-theme: jekyll-theme-minimal
+redirects_enabled: false
+exclude:
+  - src
+  - legacy
+  - node_modules
+  - package.json
+  - package-lock.json
+  - eleventy.config.js
+  - scripts
+  - README.md
+  - ASSETS.md
+  - docs

@@ -1,0 +1,35 @@
+[
+  {
+    "asset": "neighborhood",
+    "original": "9D6A544B-312F-415C-95C9-BEACD20F80E0.png",
+    "originalSha256": "33581e74c6dc8a9e853fd347ebddb6bac8cd8fe5a8cd76e36009bd352e0a5afa",
+    "sourceSize": [
+      1170,
+      2532
+    ],
+    "captureDateUTC": "2026-10-28",
+    "sourceSHA": "1614043f1d29e95d384e20c25b4b44c6ab0ca446"
+  },
+  {
+    "asset": "day-detail",
+    "original": "915A5C9A-3EF2-492A-84AF-E484ADF21498.png",
+    "originalSha256": "69c0d934f2f8eedbc01d5e392dfecbb2ba3fb9c87711fb056f551a15e0c6aac2",
+    "sourceSize": [
+      1170,
+      2532
+    ],
+    "captureDateUTC": "2026-10-28",
+    "sourceSHA": "1614043f1d29e95d384e20c25b4b44c6ab0ca446"
+  },
+  {
+    "asset": "calendar",
+    "original": "7F79206B-5D23-4A5B-B3AC-8ED10AE7C2F4.png",
+    "originalSha256": "779d8343a46797399b5cf920f46b290799c4232b168f0beb4e2b35c9dab06ec8",
+    "sourceSize": [
+      1170,
+      2532
+    ],
+    "captureDateUTC": "2026-10-28",
+    "sourceSHA": "1614043f1d29e95d384e20c25b4b44c6ab0ca446"
+  }
+]

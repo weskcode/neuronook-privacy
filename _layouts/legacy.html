@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ page.title }}</title>
+{% if site.redirects_enabled %}<meta http-equiv="refresh" content="0; url={{ page.redirect_target }}">{% endif %}
+<link rel="canonical" href="{{ page.redirect_target }}">
+</head>
+<body>
+{{ content }}
+{% if site.redirects_enabled %}<p><a href="{{ page.redirect_target }}">Continue to the new NeuroNook page.</a></p>{% endif %}
+</body>
+</html>
