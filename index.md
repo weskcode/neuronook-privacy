@@ -6,7 +6,7 @@ redirect_target: https://neuronook.app/privacy/
 
 # NeuroNook Privacy Policy
 
-_Last updated: October 12, 2026_
+_Last updated: October 29, 2026_
 
 NeuroNook is a private mental-wellness journal. This policy describes exactly what
 the app does with your information - which is, almost entirely, nothing beyond
@@ -89,10 +89,10 @@ its own anonymous purchase record, which neither action removes.
 
 ## Children
 
-NeuroNook is not directed at children under 13 and does not knowingly collect
-information from anyone - including children - because it has no accounts and no
-servers of its own. The optional Live Weather feature is the one place the app
-contacts a service, and it is described under Location.
+NeuroNook is not directed at children under 13. The app has no accounts or
+advertising. Its weather and purchase-management services are described under
+Location and Purchases; journal entries, check-in answers, and scores are not
+included in those requests.
 
 ## Changes to this policy
 
