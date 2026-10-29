@@ -1,5 +1,5 @@
 title: NeuroNook
-redirects_enabled: false
+redirects_enabled: true
 exclude:
   - src
   - legacy
