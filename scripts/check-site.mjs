@@ -31,15 +31,23 @@ for (const file of pages) {
     await readFile(disk);
   }
 }
+// Preserve the archived policy while allowing only the approved disclosure correction.
+const approvedChildren = `NeuroNook is not directed at children under 13. The app has no accounts or
+advertising. Its weather and purchase-management services are described under
+Location and Purchases; journal entries, check-in answers, and scores are not
+included in those requests.`;
+const approvedPolicy = (await read('legacy/privacy-original.md'))
+  .replace('_Last updated: October 12, 2026_', '_Last updated: October 29, 2026_')
+  .replace(/(?<=## Children\n\n)[\s\S]*?(?=\n\n## Changes to this policy)/, approvedChildren);
 for (const [original, moved] of [['privacy-original.md', 'privacy'], ['support-original.md', 'support']]) {
-  const before = await read(`legacy/${original}`);
+  const before = moved === 'privacy' ? approvedPolicy : await read(`legacy/${original}`);
   const after = (await read(`src/${moved}/index.md`)).split('---\n\n').slice(1).join('---\n\n');
   assert.equal(after, before, `${moved}: original Markdown changed`);
 }
 for (const [file, destination, original] of [['index.md', 'privacy', 'privacy-original.md'], ['support/index.md', 'support', 'support-original.md']]) {
   const legacy = await read(file);
   assert(legacy.includes(`redirect_target: https://neuronook.app/${destination}/`));
-  assert.equal(legacy.split('---\n\n').slice(1).join('---\n\n'), await read(`legacy/${original}`), 'legacy fallback text must stay intact');
+  assert.equal(legacy.split('---\n\n').slice(1).join('---\n\n'), destination === 'privacy' ? approvedPolicy : await read(`legacy/${original}`), 'legacy fallback must match the approved policy or original support text');
 }
 const legacyLayout = await read('_layouts/legacy.html');
 assert(legacyLayout.includes('{% if site.redirects_enabled %}<meta http-equiv="refresh" content="0; url={{ page.redirect_target }}">'));
@@ -60,4 +68,4 @@ const assets = await readdir('_site/assets');
 assert(!assets.some(name => /\.(?:js|mjs)$/.test(name)));
 const pkg = JSON.parse(await read('package.json'));
 assert.deepEqual(Object.keys(pkg.devDependencies), ['@11ty/eleventy']);
-console.log(`PASS: ${pages.length} pages, local links/assets, original policy/support, legacy redirects, metadata, RSS, sitemap, robots and headers`);
+console.log(`PASS: ${pages.length} pages, local links/assets, approved policy/original support, legacy redirects, metadata, RSS, sitemap, robots and headers`);
