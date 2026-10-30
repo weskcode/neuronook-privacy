@@ -1,12 +1,14 @@
 ---
 layout: page.njk
-title: NeuroNook changelog
+title: Changelog
 description: Website updates and a place for future NeuroNook release notes.
 permalink: /changelog/
 ---
 
 # Changelog
 
-## Website preview
+## Website
 
-This website brings together NeuroNook's privacy policy, support details, and a new home for development notes. App release notes will be added here when available.
+Landing page, privacy, support, notes and RSS are live.
+
+App release notes will be added here.

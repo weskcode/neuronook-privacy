@@ -1,9 +1,9 @@
 ---
-title: A small place for NeuroNook news
-description: A placeholder for future notes about NeuroNook, its development, and private daily reflection.
+title: Welcome to NeuroNook notes
+description: A placeholder for future app updates and development notes.
 date: 2026-10-29
 ---
 
-This is a placeholder post. Future posts will share NeuroNook updates and notes from development.
+This is a placeholder. App updates and development notes will appear here.
 
-You can follow new posts with the [RSS feed](/feed.xml), without signing up or sharing an email address.
+[Follow via RSS](/feed.xml), no signup or email needed.

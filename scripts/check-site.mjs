@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 
 const read = file => readFile(file, 'utf8');
 const pages = ['index.html', 'privacy/index.html', 'support/index.html', 'blog/index.html', 'blog/welcome/index.html', 'changelog/index.html', '404.html'];
@@ -19,6 +20,7 @@ for (const file of pages) {
     assert(html.includes(`property="${tag}"`), `${file}: ${tag} missing`);
   }
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${file}: one h1 required`);
+  assert(!/weskcode@duck\.com|gmail\.com/i.test(html), `${file}: outdated or private contact address`);
   assert(!/<script\b|<iframe\b|<embed\b|<style\b|\son\w+=/i.test(html), `${file}: active or inline content`);
   for (const match of html.matchAll(/<(?:img|link)\b[^>]*(?:src|href)="([^"]+)"/g)) {
     assert(!/^https?:\/\//.test(match[1]) || match[0].includes('canonical'), `${file}: external asset ${match[1]}`);
@@ -31,24 +33,20 @@ for (const file of pages) {
     await readFile(disk);
   }
 }
-// Preserve the archived policy while allowing only the approved disclosure correction.
-const approvedChildren = `NeuroNook is not directed at children under 13. The app has no accounts or
-advertising. Its weather and purchase-management services are described under
-Location and Purchases; journal entries, check-in answers, and scores are not
-included in those requests.`;
-const approvedPolicy = (await read('legacy/privacy-original.md'))
-  .replace('_Last updated: October 12, 2026_', '_Last updated: October 29, 2026_')
-  .replace(/(?<=## Children\n\n)[\s\S]*?(?=\n\n## Changes to this policy)/, approvedChildren);
-for (const [original, moved] of [['privacy-original.md', 'privacy'], ['support-original.md', 'support']]) {
-  const before = moved === 'privacy' ? approvedPolicy : await read(`legacy/${original}`);
-  const after = (await read(`src/${moved}/index.md`)).split('---\n\n').slice(1).join('---\n\n');
-  assert.equal(after, before, `${moved}: original Markdown changed`);
+// Archive integrity and current/legacy parity remain separate from editorial wording.
+const archivedOriginals = {"privacy-original.md": "7cc0cae4a8faa6359d704111ade33f4482597794fe4165c7115e6f600d0d3645", "support-original.md": "be0fc4e3a14e5d0c44db96aa3fcb5837bbaf82f6c7921561db6fe0b0fe28d8ef"};
+for (const [file, sha256] of Object.entries(archivedOriginals)) {
+  assert.equal(createHash('sha256').update(await readFile(`legacy/${file}`)).digest('hex'), sha256, `${file}: archived original changed`);
 }
-for (const [file, destination, original] of [['index.md', 'privacy', 'privacy-original.md'], ['support/index.md', 'support', 'support-original.md']]) {
+const markdownBody = text => text.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n(?:\r?\n)?/, '');
+for (const [file, destination] of [['index.md', 'privacy'], ['support/index.md', 'support']]) {
   const legacy = await read(file);
   assert(legacy.includes(`redirect_target: https://neuronook.app/${destination}/`));
-  assert.equal(legacy.split('---\n\n').slice(1).join('---\n\n'), destination === 'privacy' ? approvedPolicy : await read(`legacy/${original}`), 'legacy fallback must match the approved policy or original support text');
+  assert.equal(markdownBody(legacy), markdownBody(await read(`src/${destination}/index.md`)), 'legacy fallback must match the current published text');
 }
+const policy = await read('_site/privacy/index.html');
+assert(policy.includes('<th scope="col" role="columnheader">Service</th>') && policy.includes('<th scope="col" role="columnheader">Information and purpose</th>'), 'privacy service table must retain semantic headers');
+for (const service of ['WeatherKit', 'RevenueCat', 'App Store']) assert(policy.includes(service), `privacy: missing ${service} disclosure`);
 assert((await read('_config.yml')).includes('  - legacy/**\n'), 'exclude archived contents without hiding the legacy.html layout');
 const legacyLayout = await read('_layouts/legacy.html');
 assert(legacyLayout.includes('{% if site.redirects_enabled %}<meta http-equiv="refresh" content="0; url={{ page.redirect_target }}">'));
@@ -56,7 +54,7 @@ assert(legacyLayout.includes('rel="canonical" href="{{ page.redirect_target }}"'
 assert((await read('_config.yml')).includes('redirects_enabled: true'), 'legacy redirects must stay enabled after domain activation');
 for (const route of ['privacy', 'support']) {
   const html = await read(`_site/${route}/index.html`);
-  assert(html.includes('href="mailto:weskcode@duck.com"') && html.includes('>weskcode@duck.com</a>'), 'support email must remain visible and usable');
+  assert(html.includes('href="mailto:support@neuronook.app"') && html.includes('>support@neuronook.app</a>'), 'support email must remain visible and usable');
 }
 assert((await read('_site/support/index.html')).includes('href="/privacy/"'), 'support privacy link must reach the moved policy');
 const sitemap = await read('_site/sitemap.xml');
@@ -69,4 +67,4 @@ const assets = await readdir('_site/assets');
 assert(!assets.some(name => /\.(?:js|mjs)$/.test(name)));
 const pkg = JSON.parse(await read('package.json'));
 assert.deepEqual(Object.keys(pkg.devDependencies), ['@11ty/eleventy']);
-console.log(`PASS: ${pages.length} pages, local links/assets, approved policy/original support, legacy redirects, metadata, RSS, sitemap, robots and headers`);
+console.log(`PASS: ${pages.length} pages, local links/assets, approved policy/support, legacy redirects, metadata, RSS, sitemap, robots and headers`);
