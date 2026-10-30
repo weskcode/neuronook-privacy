@@ -26,15 +26,15 @@
   <header class="site-header wrap">
     <a class="wordmark" href="/" aria-label="NeuroNook home"><img src="/assets/favicon.png" alt="" width="36" height="36">NeuroNook</a>
     <nav aria-label="Main navigation">
-      {% for label, href in [['Privacy', '/privacy/'], ['Support', '/support/'], ['Blog', '/blog/'], ['Changelog', '/changelog/']] %}
+      {% for label, href in [['Privacy', '/privacy/'], ['Support', '/support/'], ['Notes', '/blog/'], ['Changelog', '/changelog/']] %}
       <a href="{{ href }}"{% if page.url == href or (href == '/blog/' and isPost) %} aria-current="page"{% endif %}>{{ label }}</a>
       {% endfor %}
     </nav>
   </header>
   <main id="main" class="wrap{% if not home %} document{% endif %}" tabindex="-1">{{ content | safe }}</main>
   <footer class="site-footer wrap">
-    <p class="footer-note">A small daily check-in.<br><strong>A neighborhood of your own.</strong></p>
-    <div><p>This website has no analytics, cookies, or third-party assets.</p>
+    <p class="footer-note"><strong>Your daily check-in.</strong></p>
+    <div><p>No analytics, cookies or third-party assets.</p>
     <nav aria-label="Footer navigation"><a href="/privacy/">Privacy</a><a href="/support/">Support</a><a href="/feed.xml">RSS</a></nav>
     <p class="legal">Apple and the Apple logo are trademarks of Apple Inc. App Store is a service mark of Apple Inc.</p></div>
   </footer>

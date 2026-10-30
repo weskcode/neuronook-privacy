@@ -1,7 +1,7 @@
 ---
 layout: base.njk
-title: Notes from NeuroNook
-description: Development notes and updates from NeuroNook, a playful and private wellness journal.
+title: Notes
+description: App updates and development notes from NeuroNook.
 ---
-<div class="prose"><h1>Notes from NeuroNook</h1><p>A place for development notes and app updates. Follow along with the <a href="/feed.xml">RSS feed</a>.</p>
+<div class="prose"><h1>Notes</h1><p>App updates and development notes. <a href="/feed.xml">Follow via RSS</a>.</p>
 <ul class="post-list">{% for post in collections.posts | reverse %}<li><time class="post-date" datetime="{{ post.date | isoDate }}">{{ post.date | dateLabel }}</time><h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2><p>{{ post.data.description }}</p></li>{% endfor %}</ul></div>
