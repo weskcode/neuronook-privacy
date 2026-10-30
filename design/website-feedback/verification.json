@@ -1,0 +1,98 @@
+{
+  "checks": [
+    {
+      "source": "01-intro",
+      "width": 1080,
+      "height": 1350,
+      "brokenImages": 0,
+      "scripts": 0,
+      "contentBottom": 0
+    },
+    {
+      "source": "A",
+      "width": 1080,
+      "height": 1350,
+      "brokenImages": 0,
+      "scripts": 0,
+      "contentBottom": 1173.7984619140625
+    },
+    {
+      "source": "B",
+      "width": 1080,
+      "height": 1350,
+      "brokenImages": 0,
+      "scripts": 0,
+      "contentBottom": 1173.7984619140625
+    },
+    {
+      "source": "C",
+      "width": 1080,
+      "height": 1350,
+      "brokenImages": 0,
+      "scripts": 0,
+      "contentBottom": 1157.318359375
+    },
+    {
+      "source": "A-mobile",
+      "width": 1080,
+      "height": 1350,
+      "brokenImages": 0,
+      "scripts": 0,
+      "contentBottom": 1159.9124755859375
+    },
+    {
+      "source": "B-mobile",
+      "width": 1080,
+      "height": 1350,
+      "brokenImages": 0,
+      "scripts": 0,
+      "contentBottom": 1159.9124755859375
+    },
+    {
+      "source": "C-mobile",
+      "width": 1080,
+      "height": 1350,
+      "brokenImages": 0,
+      "scripts": 0,
+      "contentBottom": 1159.9124755859375
+    },
+    {
+      "source": "comparison",
+      "width": 1920,
+      "height": 1080,
+      "brokenImages": 0,
+      "scripts": 0,
+      "contentBottom": 920.1028442382812
+    },
+    {
+      "source": "comparison-BCA",
+      "width": 1920,
+      "height": 1080,
+      "brokenImages": 0,
+      "scripts": 0,
+      "contentBottom": 920.1028442382812
+    },
+    {
+      "source": "comparison-CAB",
+      "width": 1920,
+      "height": 1080,
+      "brokenImages": 0,
+      "scripts": 0,
+      "contentBottom": 920.1028442382812
+    },
+    {
+      "source": "05-poll",
+      "width": 1080,
+      "height": 1350,
+      "brokenImages": 0,
+      "scripts": 0,
+      "contentBottom": 0
+    }
+  ],
+  "decks": [
+    "ABC",
+    "BCA",
+    "CAB"
+  ],
+  "errors": []
+}
