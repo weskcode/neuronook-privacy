@@ -45,7 +45,7 @@ for (const [file, destination] of [['index.md', 'privacy'], ['support/index.md',
   assert.equal(markdownBody(legacy), markdownBody(await read(`src/${destination}/index.md`)), 'legacy fallback must match the current published text');
 }
 const policy = await read('_site/privacy/index.html');
-assert(policy.includes('<th>Service</th>') && policy.includes('<th>Information and purpose</th>'), 'privacy service table must retain semantic headers');
+assert(policy.includes('<th scope="col" role="columnheader">Service</th>') && policy.includes('<th scope="col" role="columnheader">Information and purpose</th>'), 'privacy service table must retain semantic headers');
 for (const service of ['WeatherKit', 'RevenueCat', 'App Store']) assert(policy.includes(service), `privacy: missing ${service} disclosure`);
 assert((await read('_config.yml')).includes('  - legacy/**\n'), 'exclude archived contents without hiding the legacy.html layout');
 const legacyLayout = await read('_layouts/legacy.html');

@@ -53,7 +53,7 @@ References: [Eleventy on Cloudflare Pages](https://developers.cloudflare.com/pag
 ## Edit content
 
 - Landing page: `src/index.njk`; shared styles: `src/assets/site.css`.
-- Privacy and support: `src/privacy/index.md`, `src/support/index.md`. The approved table-first rewrite is mapped against the original disclosures in `docs/privacy-disclosures.md`. Original documents remain archived in `legacy/`; current and legacy fallback bodies stay identical. Both use the public support alias. The support page links directly to `/privacy/`.
+- Privacy and support: `src/privacy/index.md`, `src/support/index.md`. The approved table-first rewrite is mapped against the original disclosures in `docs/privacy-disclosures.md`. Original documents remain archived in `legacy/`; current and legacy fallback bodies stay identical. Both use the public support alias. The support page’s `../` privacy link works in the legacy fallback and renders as `/privacy/` on the new site.
 - Blog: add Markdown files in `src/blog/posts/` with `title`, `description`, and `date` front matter. The directory data supplies the layout, collection, and URL. The index, RSS summaries, and sitemap update on build. The welcome entry is explicitly a placeholder.
 - Changelog: `src/changelog.md`. It has no invented app version history.
 - Shared metadata: `src/_includes/base.njk` and `src/_data/site.json`.

@@ -12,15 +12,18 @@ NeuroNook has no accounts, ads or tracking. Your check-ins and journal stay on y
 
 ## On your device
 
-iOS file encryption tied to your passcode protects your check-in answers, wellness scores, journal notes, custom questions, reminder preferences/history, and appearance/accessibility settings. Reminders and supportive notifications are scheduled locally; their content and behavior are not sent anywhere.
+Your check-in answers, wellness scores, journal notes and custom questions are protected by iOS file encryption tied to your passcode. Reminder preferences/history and appearance/accessibility settings also stay on your device. Reminders and supportive notifications are scheduled locally; their content and behavior are not sent anywhere.
 
 ## When the app connects
 
-| Service | Information and purpose |
-| --- | --- |
-| Apple Weather (WeatherKit) | Location rounded to about 11 km (7 mi), plus the IP address visible with any request, for forecasts. Live Weather is off by default; when enabled, checks run about every 30 minutes while the app is open. |
-| RevenueCat | A random install ID, device vendor ID, device model, iOS/app versions, language, App Store country, purchase plan/date/renewal history, and IP address. Used to confirm Plus access with Apple and count purchases and trials, not for ads or tracking. Requests happen when the app opens and when you view the Plus offer, buy or restore. |
-| Apple / App Store | Apple processes optional Plus subscriptions and lifetime purchases through your Apple Account. NeuroNook does not receive your name, email address or payment details. |
+<table role="table" aria-label="External services and data use">
+<thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">Service</th><th scope="col" role="columnheader">Information and purpose</th></tr></thead>
+<tbody role="rowgroup">
+<tr role="row"><th scope="row" role="rowheader">Apple Weather (WeatherKit)</th><td role="cell">Location rounded to about 11 km (7 mi), plus the IP address visible with any request, for forecasts. Live Weather is off by default; when enabled, checks run about every 30 minutes while the app is open.</td></tr>
+<tr role="row"><th scope="row" role="rowheader">RevenueCat</th><td role="cell">A random install ID, device vendor ID, device model, iOS/app versions, language, App Store country, purchase plan/date/renewal history, and IP address. Used to confirm Plus access with Apple and count purchases and trials, not for ads or tracking. Requests happen when the app opens and when you view the Plus offer, buy or restore.</td></tr>
+<tr role="row"><th scope="row" role="rowheader">Apple / App Store</th><td role="cell">Apple processes optional Plus subscriptions and lifetime purchases through your Apple Account. NeuroNook does not receive your name, email address or payment details.</td></tr>
+</tbody>
+</table>
 
 Journal notes, check-in answers and scores are not sent to these services. Weather requests also exclude settings. Apple and RevenueCat handle their data under their own privacy policies.
 

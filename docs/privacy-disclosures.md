@@ -7,7 +7,7 @@ The table-first policy condenses the previous policy without changing app behavi
 | No accounts, ads or tracking; journal data stays local; sharing is chosen | Introduction and Sharing and deletion |
 | Answers, scores, notes and custom questions | On your device |
 | Reminder preferences/history and appearance/accessibility settings | On your device |
-| iOS file encryption tied to the passcode | On your device |
+| iOS file encryption tied to the passcode for answers, scores, notes and custom questions; settings remain local without a broader encryption claim | On your device |
 | Local reminders/supportive notifications; no notification content or behavior sent | On your device |
 | Location optional; app works without permission; sunrise/sunset uses approximate location locally | Weather controls |
 | Weather off by default; Apple Weather/WeatherKit receives rounded location and network address | Apple Weather table row |
