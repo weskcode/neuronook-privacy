@@ -19,6 +19,7 @@ for (const file of pages) {
     assert(html.includes(`property="${tag}"`), `${file}: ${tag} missing`);
   }
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${file}: one h1 required`);
+  assert(!/weskcode@duck\.com|gmail\.com/i.test(html), `${file}: outdated or private contact address`);
   assert(!/<script\b|<iframe\b|<embed\b|<style\b|\son\w+=/i.test(html), `${file}: active or inline content`);
   for (const match of html.matchAll(/<(?:img|link)\b[^>]*(?:src|href)="([^"]+)"/g)) {
     assert(!/^https?:\/\//.test(match[1]) || match[0].includes('canonical'), `${file}: external asset ${match[1]}`);
@@ -31,23 +32,25 @@ for (const file of pages) {
     await readFile(disk);
   }
 }
-// Preserve the archived policy while allowing only the approved disclosure correction.
+// Keep archives unchanged; permit only the approved disclosure and public contact changes.
 const approvedChildren = `NeuroNook is not directed at children under 13. The app has no accounts or
 advertising. Its weather and purchase-management services are described under
 Location and Purchases; journal entries, check-in answers, and scores are not
 included in those requests.`;
 const approvedPolicy = (await read('legacy/privacy-original.md'))
   .replace('_Last updated: October 12, 2026_', '_Last updated: October 29, 2026_')
-  .replace(/(?<=## Children\n\n)[\s\S]*?(?=\n\n## Changes to this policy)/, approvedChildren);
+  .replace(/(?<=## Children\n\n)[\s\S]*?(?=\n\n## Changes to this policy)/, approvedChildren)
+  .replaceAll('weskcode@duck.com', 'support@neuronook.app');
+const approvedSupport = (await read('legacy/support-original.md')).replaceAll('weskcode@duck.com', 'support@neuronook.app');
 for (const [original, moved] of [['privacy-original.md', 'privacy'], ['support-original.md', 'support']]) {
-  const before = moved === 'privacy' ? approvedPolicy : await read(`legacy/${original}`);
+  const before = moved === 'privacy' ? approvedPolicy : approvedSupport;
   const after = (await read(`src/${moved}/index.md`)).split('---\n\n').slice(1).join('---\n\n');
-  assert.equal(after, before, `${moved}: original Markdown changed`);
+  assert.equal(after, before, `${moved}: unapproved Markdown change`);
 }
 for (const [file, destination, original] of [['index.md', 'privacy', 'privacy-original.md'], ['support/index.md', 'support', 'support-original.md']]) {
   const legacy = await read(file);
   assert(legacy.includes(`redirect_target: https://neuronook.app/${destination}/`));
-  assert.equal(legacy.split('---\n\n').slice(1).join('---\n\n'), destination === 'privacy' ? approvedPolicy : await read(`legacy/${original}`), 'legacy fallback must match the approved policy or original support text');
+  assert.equal(legacy.split('---\n\n').slice(1).join('---\n\n'), destination === 'privacy' ? approvedPolicy : approvedSupport, 'legacy fallback must match the approved policy and support text');
 }
 assert((await read('_config.yml')).includes('  - legacy/**\n'), 'exclude archived contents without hiding the legacy.html layout');
 const legacyLayout = await read('_layouts/legacy.html');
@@ -56,7 +59,7 @@ assert(legacyLayout.includes('rel="canonical" href="{{ page.redirect_target }}"'
 assert((await read('_config.yml')).includes('redirects_enabled: true'), 'legacy redirects must stay enabled after domain activation');
 for (const route of ['privacy', 'support']) {
   const html = await read(`_site/${route}/index.html`);
-  assert(html.includes('href="mailto:weskcode@duck.com"') && html.includes('>weskcode@duck.com</a>'), 'support email must remain visible and usable');
+  assert(html.includes('href="mailto:support@neuronook.app"') && html.includes('>support@neuronook.app</a>'), 'support email must remain visible and usable');
 }
 assert((await read('_site/support/index.html')).includes('href="/privacy/"'), 'support privacy link must reach the moved policy');
 const sitemap = await read('_site/sitemap.xml');
@@ -69,4 +72,4 @@ const assets = await readdir('_site/assets');
 assert(!assets.some(name => /\.(?:js|mjs)$/.test(name)));
 const pkg = JSON.parse(await read('package.json'));
 assert.deepEqual(Object.keys(pkg.devDependencies), ['@11ty/eleventy']);
-console.log(`PASS: ${pages.length} pages, local links/assets, approved policy/original support, legacy redirects, metadata, RSS, sitemap, robots and headers`);
+console.log(`PASS: ${pages.length} pages, local links/assets, approved policy/support, legacy redirects, metadata, RSS, sitemap, robots and headers`);

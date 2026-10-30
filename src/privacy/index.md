@@ -102,4 +102,4 @@ be updated first, and any new data use will be opt-in.
 
 ## Contact
 
-Questions? Email [weskcode@duck.com](mailto:weskcode@duck.com).
+Questions? Email [support@neuronook.app](mailto:support@neuronook.app).
