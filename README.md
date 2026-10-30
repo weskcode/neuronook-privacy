@@ -53,9 +53,9 @@ References: [Eleventy on Cloudflare Pages](https://developers.cloudflare.com/pag
 ## Edit content
 
 - Landing page: `src/index.njk`; shared styles: `src/assets/site.css`.
-- Privacy and support: `src/privacy/index.md`, `src/support/index.md`. The support body matches its preserved original in `legacy/` except for the approved public address change to `support@neuronook.app`. The privacy body includes the approved October 29 correction to the Children section so it reflects both weather and purchase-management requests; the original policy remains archived in `legacy/`. Both policy copies use the approved public support address. The support page's relative privacy link is updated to `/privacy/` during rendering, without changing its words.
+- Privacy and support: `src/privacy/index.md`, `src/support/index.md`. The approved table-first rewrite is mapped against the original disclosures in `docs/privacy-disclosures.md`. Original documents remain archived in `legacy/`; current and legacy fallback bodies stay identical. Both use the public support alias. The support page links directly to `/privacy/`.
 - Blog: add Markdown files in `src/blog/posts/` with `title`, `description`, and `date` front matter. The directory data supplies the layout, collection, and URL. The index, RSS summaries, and sitemap update on build. The welcome entry is explicitly a placeholder.
 - Changelog: `src/changelog.md`. It has no invented app version history.
 - Shared metadata: `src/_includes/base.njk` and `src/_data/site.json`.
 
-Keep all assets local. See `ASSETS.md` for screenshot provenance and Apple's badge source. `npm run check` checks output links, metadata, zero active content, and unchanged policy/support source. Lighthouse and responsive browser checks should also run when changing templates or CSS; their tools are not site dependencies.
+Keep all assets local. See `ASSETS.md` for screenshot provenance and Apple's badge source. `npm run check` checks output links, metadata, zero active content, and archived original integrity and current/legacy copy consistency. Lighthouse and responsive browser checks should also run when changing templates or CSS; their tools are not site dependencies.
