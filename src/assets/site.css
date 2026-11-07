@@ -440,11 +440,22 @@ figcaption {
     width:280px;
   }
 }
-@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
-  .store-link:not(:focus-visible) {
-    transition:transform 140ms var(--ease-out);
+.home .nav-download:hover {
+  text-decoration:none;
+}
+@media(hover:hover) and (pointer:fine) {
+  .home .nav-download {
+    transition:background-color 150ms ease;
   }
-  .store-link:active:not(:focus-visible) {
+  .home .nav-download:hover {
+    background:color-mix(in oklab,var(--accent),var(--paper) 14%);
+  }
+}
+@media(prefers-reduced-motion:no-preference) {
+  .store-link,.home .nav-download {
+    transition:transform 160ms var(--ease-out),background-color 150ms ease;
+  }
+  .store-link:active,.home .nav-download:active {
     transform:scale(.97);
   }
 }
