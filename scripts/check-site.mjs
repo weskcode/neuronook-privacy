@@ -25,7 +25,10 @@ for (const file of pages) {
   }
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${file}: one h1 required`);
   assert(!/support@neuronook\.app|gmail\.com/i.test(html), `${file}: outdated or private contact address`);
-  assert(!/<script\b|<iframe\b|<embed\b|<style\b|\son\w+=/i.test(html), `${file}: active or inline content`);
+  const withoutData = html.replace(/<script type="application\/ld\+json">[^<]*<\/script>/g, '');
+  assert(!/<script\b|<iframe\b|<embed\b|<style\b|\son\w+=/i.test(withoutData), `${file}: active or inline content`);
+  for (const [, json] of html.matchAll(/<script type="application\/ld\+json">([^<]*)<\/script>/g)) JSON.parse(json);
+  assert.equal(html.includes('application/ld+json'), file === 'index.html', `${file}: structured data belongs on the home page only`);
   for (const match of html.matchAll(/<(?:img|link)\b[^>]*(?:src|href)="([^"]+)"/g)) {
     assert(!/^https?:\/\//.test(match[1]) || match[0].includes('canonical'), `${file}: external asset ${match[1]}`);
   }
