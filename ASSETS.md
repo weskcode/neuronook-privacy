@@ -25,6 +25,20 @@ The original 1170 × 2532 PNGs remain in the app's preserved evidence. The websi
 
 The 1170 × 2532 originals are kept outside this repository, in `~/.codex/task-artifacts/neuronook-homepage-20261107/capture/`. They were resized the same way as the October set. The homepage still uses `day-detail*.webp` from October 28, whose neighborhood header shows the night sky, so the page shows both. `neighborhood*.webp`, `calendar*.webp` and `social.png` are the October captures and no longer appear in the homepage markup (`social.png` is still the social preview image).
 
+### Mini-game captures, November 7, 2026
+
+`game-brick*.webp`, `game-pipes*.webp`, `game-foundation*.webp`, `game-plug*.webp` and `game-roof*.webp` feed the homepage mini-game carousel. They are resized copies of screenshots taken from the running app on **November 7, 2026**. Source: `weskcode/NeuroNook` at `799d41f4d4206e0fdadf59230193beb090f1264a` (`feature/cloud-batch-20261106-b2`), a Debug simulator build. Device: iPhone 18 Pro, iOS 27.2, English, light appearance, default text size, status bar fixed at 9:41. The app was launched with `--uitesting --uitesting-screenshots --uitesting-screenshots-skip-today -themeMode light`, which seeds the in-memory mock journal and starts today's check-in from an empty state. Each capture is the first screen a game shows, before any answer. They are questions 1, 2, 3, 4 and 7 of the canonical check-in plan. No app controls, text or device frames were drawn or replaced. The originals are 1206 × 2622 PNGs kept outside this repository, in `~/.codex/task-artifacts/neuronook-games-carousel-20261107/capture/`. They were resized to 480 and 960 pixels wide with Pillow's Lanczos resampling and encoded as WebP at quality 88.
+
+| Website asset | Capture | SHA-256 of original PNG |
+| --- | --- | --- |
+| `game-brick*.webp` | `game-brick.png` | `65513273dfd804259d09993eb5f30493fd12dc67500a964c88d67550047da7bb` |
+| `game-pipes*.webp` | `game-pipes.png` | `5d2ec13306ca56642218c91a4515c9e16d0ce8591a8ddce8ee60e6c3695e8b83` |
+| `game-foundation*.webp` | `game-foundation.png` | `b2d0a6a2dc426a47d8cde027962ed4a6da63f33b3cfe18e69595f987fa95a136` |
+| `game-plug*.webp` | `game-plug.png` | `44b505948dfa44824ff298751d95ea1fb0c516804b66bec8f1c1d45162faaba3` |
+| `game-roof*.webp` | `game-roof.png` | `866e551e34b2f084c5c3f5cb3095f5e8715e2ddecaa1d9ffc8c172d8f8636c8f` |
+
+The Foundation capture shows the game's current flat house. The app is being changed to use its real house art, so replace `game-foundation*.webp` with a new capture once that fix is merged.
+
 `favicon.png` is a resized copy of NeuroNook's existing `Assets.xcassets/AppIcon.appiconset/appicon.png` at app source SHA `cb8f10abd7b33488d07da7bfbab413fab77ac974`. `apple-touch-icon.png` is the same icon resized to 180 × 180 with `sips -z 180 180`.
 
 ## Official App Store badge
