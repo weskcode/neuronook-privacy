@@ -1,4 +1,5 @@
 :root {
+  color-scheme:light dark;
   --paper:#fff9ed;
   --hero-green:#dce8c8;
   --ink:#203e32;
@@ -450,6 +451,24 @@ figcaption {
 @media(prefers-reduced-motion:reduce) {
   .hero-screens .side-shot {
     transform:none;
+  }
+}
+@media screen and (prefers-color-scheme:dark) {
+  :root {
+    --paper:#28282a;
+    --hero-green:#27483a;
+    --ink:#f6f1e7;
+    --accent:#ffb299;
+    --muted:#cccccc;
+    --line:#464f4a;
+    --wash:#1d2924;
+    --focus:#ffd0bf;
+  }
+  .skip-link {
+    background:var(--paper);
+  }
+  .hero-screens img {
+    box-shadow:0 16px 32px #00000066;
   }
 }
 @media print {
