@@ -53,5 +53,60 @@
     ],
     "captureDateUTC": "2026-11-07",
     "sourceSHA": "799d41f4d4206e0fdadf59230193beb090f1264a"
+  },
+  {
+    "asset": "game-brick",
+    "original": "game-brick.png",
+    "originalSha256": "65513273dfd804259d09993eb5f30493fd12dc67500a964c88d67550047da7bb",
+    "sourceSize": [
+      1206,
+      2622
+    ],
+    "captureDateUTC": "2026-11-07",
+    "sourceSHA": "799d41f4d4206e0fdadf59230193beb090f1264a"
+  },
+  {
+    "asset": "game-pipes",
+    "original": "game-pipes.png",
+    "originalSha256": "5d2ec13306ca56642218c91a4515c9e16d0ce8591a8ddce8ee60e6c3695e8b83",
+    "sourceSize": [
+      1206,
+      2622
+    ],
+    "captureDateUTC": "2026-11-07",
+    "sourceSHA": "799d41f4d4206e0fdadf59230193beb090f1264a"
+  },
+  {
+    "asset": "game-foundation",
+    "original": "game-foundation.png",
+    "originalSha256": "b2d0a6a2dc426a47d8cde027962ed4a6da63f33b3cfe18e69595f987fa95a136",
+    "sourceSize": [
+      1206,
+      2622
+    ],
+    "captureDateUTC": "2026-11-07",
+    "sourceSHA": "799d41f4d4206e0fdadf59230193beb090f1264a"
+  },
+  {
+    "asset": "game-plug",
+    "original": "game-plug.png",
+    "originalSha256": "44b505948dfa44824ff298751d95ea1fb0c516804b66bec8f1c1d45162faaba3",
+    "sourceSize": [
+      1206,
+      2622
+    ],
+    "captureDateUTC": "2026-11-07",
+    "sourceSHA": "799d41f4d4206e0fdadf59230193beb090f1264a"
+  },
+  {
+    "asset": "game-roof",
+    "original": "game-roof.png",
+    "originalSha256": "866e551e34b2f084c5c3f5cb3095f5e8715e2ddecaa1d9ffc8c172d8f8636c8f",
+    "sourceSize": [
+      1206,
+      2622
+    ],
+    "captureDateUTC": "2026-11-07",
+    "sourceSHA": "799d41f4d4206e0fdadf59230193beb090f1264a"
   }
 ]

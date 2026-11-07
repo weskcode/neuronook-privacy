@@ -497,3 +497,119 @@ figcaption {
     padding:0;
   }
 }
+.games-band {
+  margin:32px calc(50% - 50vw);
+  padding-block:64px 48px;
+  background:var(--hero-green);
+}
+.games-head {
+  max-width:680px;
+  margin:0 auto 40px;
+  padding-inline:24px;
+  text-align:center;
+}
+.games-head h3 {
+  font-size:clamp(2rem,4.2vw,3.2rem);
+  font-weight:700;
+  margin:12px 0 24px;
+}
+.games-head p:last-child {
+  color:var(--muted);
+  font-size:1.1rem;
+  margin:0;
+}
+.games-track {
+  display:flex;
+  gap:20px;
+  padding:8px 24px;
+  overflow-x:auto;
+  justify-content:safe center;
+  scroll-snap-type:x mandatory;
+  scroll-padding-inline:24px;
+}
+.games-track:focus-visible {
+  outline:3px solid var(--focus);
+  outline-offset:-3px;
+  border-radius:24px;
+}
+@media(min-width:800px) {
+  .games-track {
+    scrollbar-width:thin;
+    scrollbar-color:var(--muted) transparent;
+    padding-bottom:20px;
+  }
+}
+.game-card {
+  flex:0 0 240px;
+  margin:0;
+  padding:16px 16px 20px;
+  background:var(--paper);
+  border-radius:24px;
+  text-align:center;
+  scroll-snap-align:center;
+}
+.game-card img {
+  width:100%;
+  border-radius:16px;
+}
+.game-card figcaption {
+  margin-top:14px;
+}
+.game-card strong,.game-card span {
+  display:block;
+}
+.game-card span {
+  color:var(--muted);
+  font-size:.9rem;
+}
+.games-note {
+  margin:24px 0 0;
+  text-align:center;
+  color:var(--muted);
+  font-size:.82rem;
+}
+@media(max-width:799px) {
+  .games-band {
+    padding-block:48px 32px;
+  }
+  .games-track {
+    gap:16px;
+    justify-content:flex-start;
+    padding-inline:calc((100% - min(72vw,280px)) / 2);
+    scroll-padding-inline:calc((100% - min(72vw,280px)) / 2);
+    scroll-snap-stop:always;
+    scrollbar-width:none;
+  }
+  .games-track::-webkit-scrollbar {
+    display:none;
+  }
+  .game-card {
+    flex-basis:min(72vw,280px);
+  }
+}
+@media(max-width:799px) {
+  @supports (scroll-marker-group:after) {
+    .games-track {
+      scroll-marker-group:after;
+    }
+    .game-card::scroll-marker {
+      content:'' / attr(data-name);
+      box-sizing:content-box;
+      width:8px;
+      height:8px;
+      padding:8px;
+      border-radius:50%;
+      background:color-mix(in srgb,var(--muted) 80%,transparent);
+      background-clip:content-box;
+    }
+    .game-card::scroll-marker:target-current {
+      background-color:var(--accent);
+    }
+    .games-track::scroll-marker-group {
+      display:flex;
+      justify-content:center;
+      gap:0;
+      margin-top:12px;
+    }
+  }
+}
