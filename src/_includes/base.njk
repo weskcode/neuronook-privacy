@@ -21,17 +21,21 @@
   <link rel="stylesheet" href="/assets/site.css">
   <link rel="alternate" type="application/rss+xml" title="NeuroNook notes" href="/feed.xml">
 </head>
-<body>
+<body{% if home %} class="home"{% endif %}>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="header-band">
   <header class="site-header wrap">
     <a class="wordmark" href="/" aria-label="NeuroNook home"><img src="/assets/favicon.png" alt="" width="36" height="36">NeuroNook</a>
     <nav aria-label="Main navigation">
+      {% if home %}<a href="#how-it-works">How it works</a>{% endif %}
       {% for label, href in [['Privacy', '/privacy/'], ['Support', '/support/'], ['Notes', '/blog/'], ['Changelog', '/changelog/']] %}
       <a href="{{ href }}"{% if page.url == href or (href == '/blog/' and isPost) %} aria-current="page"{% endif %}>{{ label }}</a>
       {% endfor %}
+      {% if home %}<a class="nav-download" href="{{ site.appStoreUrl }}">Download</a>{% endif %}
     </nav>
   </header>
-  <main id="main" class="wrap{% if not home %} document{% endif %}" tabindex="-1">{{ content | safe }}</main>
+  </div>
+  <main id="main" class="{% if home %}home-main{% else %}wrap document{% endif %}" tabindex="-1">{{ content | safe }}</main>
   <footer class="site-footer wrap">
     <p class="footer-note"><strong>Your daily check-in.</strong></p>
     <div><p>No analytics, cookies or third-party assets.</p>
