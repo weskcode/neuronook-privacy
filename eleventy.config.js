@@ -1,6 +1,7 @@
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
   eleventyConfig.addPassthroughCopy({ 'src/_headers': '_headers' });
+  eleventyConfig.addPassthroughCopy({ 'src/.well-known': '.well-known' });
   eleventyConfig.addFilter('rssDate', value => new Date(value).toUTCString());
   eleventyConfig.addFilter('isoDate', value => new Date(value).toISOString());
   eleventyConfig.addFilter('dateLabel', value => new Intl.DateTimeFormat('en', {
