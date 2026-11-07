@@ -222,10 +222,10 @@ figcaption {
   max-width:260px;
 }
 .side-shot:first-child {
-  transform:rotate(-5deg);
+  rotate:-5deg;
 }
 .side-shot:last-child {
-  transform:rotate(5deg);
+  rotate:5deg;
 }
 .center-shot {
   width:38%;
@@ -458,10 +458,61 @@ figcaption {
   .store-link:active,.home .nav-download:active {
     transform:scale(.97);
   }
+  .hero-copy > * {
+    animation:rise 400ms var(--ease-out) backwards;
+  }
+  .hero-copy > :nth-child(2) {
+    animation-delay:60ms;
+  }
+  .hero-copy > :nth-child(3) {
+    animation-delay:120ms;
+  }
+  .hero-copy > :nth-child(4) {
+    animation-delay:180ms;
+  }
+  .hero-copy > :nth-child(5) {
+    animation-delay:240ms;
+  }
+  .center-shot {
+    animation:lift 480ms var(--ease-out) 120ms backwards;
+  }
+  .side-shot {
+    animation:settle 520ms var(--ease-out) 300ms backwards;
+  }
+  @keyframes rise {
+    from {
+      opacity:0;
+      translate:0 8px;
+    }
+  }
+  @keyframes lift {
+    from {
+      translate:0 12px;
+    }
+  }
+  @keyframes settle {
+    from {
+      opacity:0;
+      translate:0 16px;
+      rotate:0deg;
+    }
+  }
+  @view-transition {
+    navigation:auto;
+  }
+  ::view-transition-old(root),::view-transition-new(root) {
+    animation-duration:160ms;
+    animation-timing-function:var(--ease-out);
+  }
 }
 @media(prefers-reduced-motion:reduce) {
-  .hero-screens .side-shot {
-    transform:none;
+  .hero-copy > *,.side-shot {
+    animation:fade 200ms ease backwards;
+  }
+  @keyframes fade {
+    from {
+      opacity:0;
+    }
   }
 }
 @media screen and (prefers-color-scheme:dark) {
