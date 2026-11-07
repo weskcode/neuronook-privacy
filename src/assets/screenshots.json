@@ -31,5 +31,27 @@
     ],
     "captureDateUTC": "2026-10-28",
     "sourceSHA": "1614043f1d29e95d384e20c25b4b44c6ab0ca446"
+  },
+  {
+    "asset": "neighborhood-day",
+    "original": "home-day-perfect.png",
+    "originalSha256": "9c60e8ca0a0d63f8624b0fa4f6a04517bd18e08aa52c07740fe3750e15a77926",
+    "sourceSize": [
+      1170,
+      2532
+    ],
+    "captureDateUTC": "2026-11-07",
+    "sourceSHA": "799d41f4d4206e0fdadf59230193beb090f1264a"
+  },
+  {
+    "asset": "calendar-current",
+    "original": "calendar-day.png",
+    "originalSha256": "6a547946907736db1d520f21a29e6e7aa65ff14e67343dc59223b2f374987fbc",
+    "sourceSize": [
+      1170,
+      2532
+    ],
+    "captureDateUTC": "2026-11-07",
+    "sourceSHA": "799d41f4d4206e0fdadf59230193beb090f1264a"
   }
 ]
