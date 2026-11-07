@@ -19,6 +19,10 @@ for (const file of pages) {
   for (const tag of ['og:title', 'og:description', 'og:url', 'og:image', 'og:type']) {
     assert(html.includes(`property="${tag}"`), `${file}: ${tag} missing`);
   }
+  assert(html.includes('name="twitter:card" content="summary_large_image"'), `${file}: twitter:card missing`);
+  for (const tag of ['twitter:title', 'twitter:description', 'twitter:image']) {
+    assert(html.includes(`name="${tag}"`), `${file}: ${tag} missing`);
+  }
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${file}: one h1 required`);
   assert(!/support@neuronook\.app|gmail\.com/i.test(html), `${file}: outdated or private contact address`);
   assert(!/<script\b|<iframe\b|<embed\b|<style\b|\son\w+=/i.test(html), `${file}: active or inline content`);
