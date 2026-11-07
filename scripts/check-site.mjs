@@ -19,9 +19,19 @@ for (const file of pages) {
   for (const tag of ['og:title', 'og:description', 'og:url', 'og:image', 'og:type']) {
     assert(html.includes(`property="${tag}"`), `${file}: ${tag} missing`);
   }
+  assert(html.includes('name="twitter:card" content="summary_large_image"'), `${file}: twitter:card missing`);
+  for (const tag of ['twitter:title', 'twitter:description', 'twitter:image']) {
+    assert(html.includes(`name="${tag}"`), `${file}: ${tag} missing`);
+  }
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${file}: one h1 required`);
   assert(!/support@neuronook\.app|gmail\.com/i.test(html), `${file}: outdated or private contact address`);
-  assert(!/<script\b|<iframe\b|<embed\b|<style\b|\son\w+=/i.test(html), `${file}: active or inline content`);
+  const withoutData = html.replace(/<script type="application\/ld\+json">[^<]*<\/script>/g, '');
+  assert(!/<script\b|<iframe\b|<embed\b|<style\b|\son\w+=/i.test(withoutData), `${file}: active or inline content`);
+  for (const [, json] of html.matchAll(/<script type="application\/ld\+json">([^<]*)<\/script>/g)) {
+    const types = JSON.parse(json)['@graph'].map(node => node['@type']);
+    assert.deepEqual(types, ['WebSite', 'MobileApplication'], `${file}: structured data graph changed`);
+  }
+  assert.equal(html.includes('application/ld+json'), file === 'index.html', `${file}: structured data belongs on the home page only`);
   for (const match of html.matchAll(/<(?:img|link)\b[^>]*(?:src|href)="([^"]+)"/g)) {
     assert(!/^https?:\/\//.test(match[1]) || match[0].includes('canonical'), `${file}: external asset ${match[1]}`);
   }

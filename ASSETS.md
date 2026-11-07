@@ -25,7 +25,7 @@ The original 1170 × 2532 PNGs remain in the app's preserved evidence. The websi
 
 The 1170 × 2532 originals are kept outside this repository, in `~/.codex/task-artifacts/neuronook-homepage-20261107/capture/`. They were resized the same way as the October set. The homepage still uses `day-detail*.webp` from October 28, whose neighborhood header shows the night sky, so the page shows both. `neighborhood*.webp`, `calendar*.webp` and `social.png` are the October captures and no longer appear in the homepage markup (`social.png` is still the social preview image).
 
-`favicon.png` is a resized copy of NeuroNook's existing `Assets.xcassets/AppIcon.appiconset/appicon.png` at app source SHA `cb8f10abd7b33488d07da7bfbab413fab77ac974`.
+`favicon.png` is a resized copy of NeuroNook's existing `Assets.xcassets/AppIcon.appiconset/appicon.png` at app source SHA `cb8f10abd7b33488d07da7bfbab413fab77ac974`. `apple-touch-icon.png` is the same icon resized to 180 × 180 with `sips -z 180 180`.
 
 ## Official App Store badge
 
