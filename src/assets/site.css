@@ -1,6 +1,5 @@
 :root {
   --paper:#fff9ed;
-  --tan:#eac49a;
   --hero-green:#dce8c8;
   --ink:#203e32;
   --accent:#284b38;
@@ -165,7 +164,7 @@ figcaption {
   background:var(--wash);
 }
 .home .header-band {
-  background:var(--tan);
+  background:var(--paper);
   border-bottom:1px solid var(--line);
 }
 .home .site-header {
@@ -283,7 +282,7 @@ figcaption {
 }
 .closing {
   padding-block:56px 64px;
-  background:var(--tan);
+  background:var(--paper);
   text-align:center;
   max-width:none;
 }
