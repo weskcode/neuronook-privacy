@@ -2,14 +2,13 @@
 
 ## Real app screenshots
 
-The three screenshot sets in `src/assets/` are resized WebP copies of actual NeuroNook UI test attachments. No app controls, text, scores, or device frames were drawn or replaced. The example entries are synthetic fixtures; the detail screen visibly says “Mock entry for Oct 27, 2026.” Inspection found no personal journal content or identifying user information in these selected screens.
+The `neighborhood*.webp` and `calendar*.webp` screenshot sets in `src/assets/` are resized WebP copies of actual NeuroNook UI test attachments. No app controls, text, scores, or device frames were drawn or replaced. The example entries are synthetic fixtures. Inspection found no personal journal content or identifying user information in these selected screens. The day-detail screen has its own section below.
 
 Source: `weskcode/NeuroNook`, historical source SHA `1614043f1d29e95d384e20c25b4b44c6ab0ca446`, U5 generation 8, `g8-en-light-default`. The test attachment manifest timestamps are **October 28, 2026 UTC**, as also documented in `reports/U5.md` section 19 of the October 26 program's evidence. These are recent historical captures, not a verification of the current app candidate. Device: iPhone 17e, iOS 27.0, English, light appearance, default text size; the neighborhood itself shows its nighttime sky.
 
 | Website asset | Original attachment | SHA-256 of original PNG |
 | --- | --- | --- |
 | `neighborhood*.webp` | `9D6A544B-312F-415C-95C9-BEACD20F80E0.png` | `33581e74c6dc8a9e853fd347ebddb6bac8cd8fe5a8cd76e36009bd352e0a5afa` |
-| `day-detail*.webp` | `915A5C9A-3EF2-492A-84AF-E484ADF21498.png` | `69c0d934f2f8eedbc01d5e392dfecbb2ba3fb9c87711fb056f551a15e0c6aac2` |
 | `calendar*.webp` | `7F79206B-5D23-4A5B-B3AC-8ED10AE7C2F4.png` | `779d8343a46797399b5cf920f46b290799c4232b168f0beb4e2b35c9dab06ec8` |
 
 The original 1170 × 2532 PNGs remain in the app's preserved evidence. The website copies were resized proportionally to 480 and 960 pixels wide with Pillow's Lanczos resampling, then encoded as WebP at quality 88. This is an offline asset preparation step, not part of the Eleventy build. `screenshots.json` records provenance alongside the assets. `social.png` uses a crop of the same real neighborhood screenshot with website copy.
@@ -23,7 +22,15 @@ The original 1170 × 2532 PNGs remain in the app's preserved evidence. The websi
 | `neighborhood-day*.webp` | `home-day-perfect.png` | `9c60e8ca0a0d63f8624b0fa4f6a04517bd18e08aa52c07740fe3750e15a77926` |
 | `calendar-current*.webp` | `calendar-day.png` | `6a547946907736db1d520f21a29e6e7aa65ff14e67343dc59223b2f374987fbc` |
 
-The 1170 × 2532 originals are kept outside this repository, in `~/.codex/task-artifacts/neuronook-homepage-20261107/capture/`. They were resized the same way as the October set. The homepage still uses `day-detail*.webp` from October 28, whose neighborhood header shows the night sky, so the page shows both. `neighborhood*.webp`, `calendar*.webp` and `social.png` are the October captures and no longer appear in the homepage markup (`social.png` is still the social preview image).
+The 1170 × 2532 originals are kept outside this repository, in `~/.codex/task-artifacts/neuronook-homepage-20261107/capture/`. They were resized the same way as the October set. `neighborhood*.webp`, `calendar*.webp` and `social.png` are the October captures and no longer appear in the homepage markup (`social.png` is still the social preview image).
+
+### Day detail with a sample note, November 7, 2026
+
+`day-detail*.webp` replaces the October 28 capture. It is a resized copy of `day-detail-note.png`, taken from the same Debug simulator build as the daytime captures above (`799d41f4d4206e0fdadf59230193beb090f1264a`), on iPhone 17e, iOS 27.2, English, light appearance, default text size, status bar fixed at 9:41, with the same launch flags. It was taken at about 8:50 PM Eastern on November 7 (01:50 UTC November 8), so the header shows the app's night sky. The seeded entry for November 6, 2026 scored 6.7 out of 10 on that launch (Physical 6, Mental 7, Emotional 9, Social 6). The Reflection text “Worked, then went on a walk. Ate some really good tacos. Skipped the gym and that’s okay.” was typed into the app's own Reflection field in the simulator, replacing the seeded “Mock entry” text. The in-memory mock journal holds it, and nothing was written to stored settings. No pixels were edited afterwards. The note is sample copy written for the website, not a real user's entry.
+
+| Website asset | Capture | SHA-256 of original PNG |
+| --- | --- | --- |
+| `day-detail*.webp` | `day-detail-note.png` | `c8eba3d9938339e07c915c56ea059e6db19f74e6efdc3d0216410366cb0e1bb7` |
 
 ### Mini-game captures, November 7, 2026
 

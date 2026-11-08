@@ -12,14 +12,14 @@
   },
   {
     "asset": "day-detail",
-    "original": "915A5C9A-3EF2-492A-84AF-E484ADF21498.png",
-    "originalSha256": "69c0d934f2f8eedbc01d5e392dfecbb2ba3fb9c87711fb056f551a15e0c6aac2",
+    "original": "day-detail-note.png",
+    "originalSha256": "c8eba3d9938339e07c915c56ea059e6db19f74e6efdc3d0216410366cb0e1bb7",
     "sourceSize": [
       1170,
       2532
     ],
-    "captureDateUTC": "2026-10-28",
-    "sourceSHA": "1614043f1d29e95d384e20c25b4b44c6ab0ca446"
+    "captureDateUTC": "2026-11-08",
+    "sourceSHA": "799d41f4d4206e0fdadf59230193beb090f1264a"
   },
   {
     "asset": "calendar",
