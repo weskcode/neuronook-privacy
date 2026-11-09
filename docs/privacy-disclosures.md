@@ -16,8 +16,8 @@ The table-first policy condenses the previous policy without changing app behavi
 | Disabling Settings → Appearance → Weather stops requests and deletes saved reading | Weather controls |
 | Apple statements: forecast-only use, no personally identifiable association or tracking between requests | Weather controls |
 | App links to Apple Weather's other data sources | Weather controls |
-| Optional Plus subscription/lifetime; Apple Account/payment processing; app receives no name/email/payment details | Apple / App Store table row |
-| RevenueCat confirms purchases with Apple and Plus access, counts purchases/trials, not ads/tracking | RevenueCat table row |
+| Optional Plus subscription; Apple Account/payment processing; app receives no name/email/payment details | Apple / App Store table row |
+| RevenueCat confirms purchases with Apple and Plus access and, for its own analytics, counts purchases/trials; not ads/tracking | RevenueCat table row |
 | RevenueCat receives random install ID, vendor ID, device model, iOS/app versions, language, App Store country, plan/date/renewal history, IP | RevenueCat table row |
 | RevenueCat requests on app open, offer view, buying or restoration | RevenueCat table row |
 | Journal notes, answers and scores excluded from external service requests; settings excluded from weather | Paragraph after the table |
