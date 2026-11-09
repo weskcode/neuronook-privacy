@@ -46,67 +46,67 @@
   {
     "asset": "calendar-current",
     "original": "calendar-day.png",
-    "originalSha256": "6a547946907736db1d520f21a29e6e7aa65ff14e67343dc59223b2f374987fbc",
+    "originalSha256": "6d3917b1f1678d7fe8785c7686941e5ebeb2c3f5c93052933ef09ba2867782f4",
     "sourceSize": [
       1170,
       2532
     ],
-    "captureDateUTC": "2026-11-07",
-    "sourceSHA": "799d41f4d4206e0fdadf59230193beb090f1264a"
+    "captureDateUTC": "2026-11-09",
+    "sourceSHA": "a06418b35394ba9cafc6ffb9cffc06924d74b603"
   },
   {
     "asset": "game-brick",
     "original": "game-brick.png",
-    "originalSha256": "65513273dfd804259d09993eb5f30493fd12dc67500a964c88d67550047da7bb",
+    "originalSha256": "09a7a17d1fe170f4216d218a917416d11c258ff9c02be71956e33ada39850d54",
     "sourceSize": [
       1206,
       2622
     ],
-    "captureDateUTC": "2026-11-07",
-    "sourceSHA": "799d41f4d4206e0fdadf59230193beb090f1264a"
+    "captureDateUTC": "2026-11-09",
+    "sourceSHA": "a06418b35394ba9cafc6ffb9cffc06924d74b603"
   },
   {
     "asset": "game-pipes",
     "original": "game-pipes.png",
-    "originalSha256": "5d2ec13306ca56642218c91a4515c9e16d0ce8591a8ddce8ee60e6c3695e8b83",
+    "originalSha256": "6336b847d9829d7d9b8b8562afa0eacf52cdcd36c210bd01b6b2038910bbaa71",
     "sourceSize": [
       1206,
       2622
     ],
-    "captureDateUTC": "2026-11-07",
-    "sourceSHA": "799d41f4d4206e0fdadf59230193beb090f1264a"
+    "captureDateUTC": "2026-11-09",
+    "sourceSHA": "a06418b35394ba9cafc6ffb9cffc06924d74b603"
   },
   {
     "asset": "game-foundation",
     "original": "game-foundation.png",
-    "originalSha256": "b2d0a6a2dc426a47d8cde027962ed4a6da63f33b3cfe18e69595f987fa95a136",
+    "originalSha256": "bb4653c92c714631d096844b6191b5b61871624d4f73b50d977fbf63d8e8354d",
     "sourceSize": [
       1206,
       2622
     ],
-    "captureDateUTC": "2026-11-07",
-    "sourceSHA": "799d41f4d4206e0fdadf59230193beb090f1264a"
+    "captureDateUTC": "2026-11-09",
+    "sourceSHA": "a06418b35394ba9cafc6ffb9cffc06924d74b603"
   },
   {
     "asset": "game-plug",
     "original": "game-plug.png",
-    "originalSha256": "44b505948dfa44824ff298751d95ea1fb0c516804b66bec8f1c1d45162faaba3",
+    "originalSha256": "d1a74277dde34e665ecbac20731b54ad879531711bae5495535fd64e5180944a",
     "sourceSize": [
       1206,
       2622
     ],
-    "captureDateUTC": "2026-11-07",
-    "sourceSHA": "799d41f4d4206e0fdadf59230193beb090f1264a"
+    "captureDateUTC": "2026-11-09",
+    "sourceSHA": "a06418b35394ba9cafc6ffb9cffc06924d74b603"
   },
   {
     "asset": "game-roof",
     "original": "game-roof.png",
-    "originalSha256": "866e551e34b2f084c5c3f5cb3095f5e8715e2ddecaa1d9ffc8c172d8f8636c8f",
+    "originalSha256": "de1d70bf5d924d8797de42e700f73a4167bcba806649bd526fd043da6be58dfb",
     "sourceSize": [
       1206,
       2622
     ],
-    "captureDateUTC": "2026-11-07",
-    "sourceSHA": "799d41f4d4206e0fdadf59230193beb090f1264a"
+    "captureDateUTC": "2026-11-09",
+    "sourceSHA": "a06418b35394ba9cafc6ffb9cffc06924d74b603"
   }
 ]
