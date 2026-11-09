@@ -16,16 +16,18 @@ The original 1170 × 2532 PNGs remain in the app's preserved evidence. The websi
 
 ### Daytime captures, November 7, 2026
 
-`neighborhood-day*.webp` and `calendar-current*.webp` are resized copies of screenshots taken from the running app on **November 7, 2026** at about 3 PM Eastern, so the neighborhood scene shows its daytime sky. Source: `weskcode/NeuroNook` at `799d41f4d4206e0fdadf59230193beb090f1264a` (`feature/cloud-batch-20261106-b2`, one commit past `develop`), a Debug simulator build. Device: iPhone 17e, iOS 27.2, English, light appearance, default text size, status bar fixed at 9:41. The app was launched with `--uitesting --uitesting-screenshots -themeMode light -selectedAvatar Face-VeryHappy -selectedAvatarOverlay Hat-HardHatYellow`. That seeds the in-memory mock journal and shows the hard-hat avatar on the profile button at the top left, and nothing was written to the app's stored settings. No app controls, text, scores, or device frames were drawn or replaced. The seeded entries are synthetic and the mock data fills every day of the month, including days after the capture date. The mock journal draws random scores on every launch, so the Home capture is from a launch whose Today entry scored 8 out of 10, which draws the complete house with an intact roof; the other houses in it are random.
+`neighborhood-day*.webp` and, until November 9, 2026, `calendar-current*.webp` are resized copies of screenshots taken from the running app on **November 7, 2026** at about 3 PM Eastern, so the neighborhood scene shows its daytime sky. Source: `weskcode/NeuroNook` at `799d41f4d4206e0fdadf59230193beb090f1264a` (`feature/cloud-batch-20261106-b2`, one commit past `develop`), a Debug simulator build. Device: iPhone 17e, iOS 27.2, English, light appearance, default text size, status bar fixed at 9:41. The app was launched with `--uitesting --uitesting-screenshots -themeMode light -selectedAvatar Face-VeryHappy -selectedAvatarOverlay Hat-HardHatYellow`. That seeds the in-memory mock journal and shows the hard-hat avatar on the profile button at the top left, and nothing was written to the app's stored settings. No app controls, text, scores, or device frames were drawn or replaced. The seeded entries are synthetic and the mock data fills every day of the month, including days after the capture date. The mock journal draws random scores on every launch, so the Home capture is from a launch whose Today entry scored 8 out of 10, which draws the complete house with an intact roof; the other houses in it are random.
 
 | Website asset | Capture | SHA-256 of original PNG |
 | --- | --- | --- |
 | `neighborhood-day*.webp` | `home-day-perfect.png` | `9c60e8ca0a0d63f8624b0fa4f6a04517bd18e08aa52c07740fe3750e15a77926` |
-| `calendar-current*.webp` | `calendar-day.png` | `6a547946907736db1d520f21a29e6e7aa65ff14e67343dc59223b2f374987fbc` |
+| `calendar-current*.webp` | `calendar-day.png` | Superseded November 9, 2026 (see below). Earlier original: `6a547946907736db1d520f21a29e6e7aa65ff14e67343dc59223b2f374987fbc` |
 
-The 1170 × 2532 originals are kept outside this repository, in `~/.codex/task-artifacts/neuronook-homepage-20261107/capture/`. They were resized the same way as the October set. The homepage still uses `day-detail*.webp` from October 28, whose neighborhood header shows the night sky, so the page shows both. `neighborhood*.webp`, `calendar*.webp` and `social.png` are the October captures and no longer appear in the homepage markup (`social.png` is still the social preview image).
+The 1170 × 2532 originals are kept outside this repository, in `~/.codex/task-artifacts/neuronook-homepage-20261107/capture/`. `calendar-day.png` there is the original of the replaced Calendar capture. They were resized the same way as the October set. The homepage still uses `day-detail*.webp` from October 28, whose neighborhood header shows the night sky, so the page shows both. `neighborhood*.webp`, `calendar*.webp` and `social.png` are the October captures and no longer appear in the homepage markup (`social.png` is still the social preview image).
 
-### Mini-game captures, November 7, 2026
+### Mini-game captures, November 7, 2026 (superseded November 9, 2026)
+
+The five files below were replaced on November 9, 2026; this section records how the earlier set was made. The current set is documented in the next section.
 
 `game-brick*.webp`, `game-pipes*.webp`, `game-foundation*.webp`, `game-plug*.webp` and `game-roof*.webp` feed the homepage mini-game carousel. They are resized copies of screenshots taken from the running app on **November 7, 2026**. Source: `weskcode/NeuroNook` at `799d41f4d4206e0fdadf59230193beb090f1264a` (`feature/cloud-batch-20261106-b2`), a Debug simulator build. Device: iPhone 18 Pro, iOS 27.2, English, light appearance, default text size, status bar fixed at 9:41. The app was launched with `--uitesting --uitesting-screenshots --uitesting-screenshots-skip-today -themeMode light`, which seeds the in-memory mock journal and starts today's check-in from an empty state. Each capture is the first screen a game shows, before any answer. They are questions 1, 2, 3, 4 and 7 of the canonical check-in plan. No app controls, text or device frames were drawn or replaced. The originals are 1206 × 2622 PNGs kept outside this repository, in `~/.codex/task-artifacts/neuronook-games-carousel-20261107/capture/`. They were resized to 480 and 960 pixels wide with Pillow's Lanczos resampling and encoded as WebP at quality 88.
 
@@ -37,7 +39,25 @@ The 1170 × 2532 originals are kept outside this repository, in `~/.codex/task-a
 | `game-plug*.webp` | `game-plug.png` | `44b505948dfa44824ff298751d95ea1fb0c516804b66bec8f1c1d45162faaba3` |
 | `game-roof*.webp` | `game-roof.png` | `866e551e34b2f084c5c3f5cb3095f5e8715e2ddecaa1d9ffc8c172d8f8636c8f` |
 
-The Foundation capture shows the game's current flat house. The app is being changed to use its real house art, so replace `game-foundation*.webp` with a new capture once that fix is merged.
+### Refresh, November 9, 2026
+
+`calendar-current*.webp`, `game-brick*.webp`, `game-pipes*.webp`, `game-foundation*.webp`, `game-plug*.webp` and `game-roof*.webp` were replaced with new captures because the app's screens had changed since November 7: the Calendar has a Trends button in its top-right corner and a scrolling grass background, Plumbing now shows a pipe with a gap to fit, Foundation uses the real house art, and the Brick and Plug screens were restyled. Source: `weskcode/NeuroNook` at `a06418b35394ba9cafc6ffb9cffc06924d74b603` (`develop`). The Debug simulator build was the one the release-verification run produced from that revision, not a separate build for these captures. Both devices ran iOS 27.2, English, light appearance, default text size, status bar fixed at 9:41. The captures were driven through `agent-device`, not drawn or edited.
+
+- Calendar: iPhone 17e, 1170 × 2532. Launched with `--uitesting --uitesting-screenshots -themeMode light -selectedAvatar Face-VeryHappy -selectedAvatarOverlay Hat-HardHatYellow`, then opened from Home. Nothing was written to the app's stored settings. The mock journal draws random scores on every launch and fills every day of the month, so the houses differ from the November 7 capture.
+- Games: iPhone 18 Pro, 1206 × 2622. Launched with `--uitesting --uitesting-screenshots --uitesting-screenshots-skip-today -themeMode light`, which starts today's check-in from an empty state. Each capture is the first screen a game shows, before any answer: questions 1, 2, 3, 4 and 7 of the canonical check-in plan, reached with Skip.
+
+| Website asset | Capture | SHA-256 of original PNG |
+| --- | --- | --- |
+| `calendar-current*.webp` | `calendar-day.png` | `6d3917b1f1678d7fe8785c7686941e5ebeb2c3f5c93052933ef09ba2867782f4` |
+| `game-brick*.webp` | `game-brick.png` | `09a7a17d1fe170f4216d218a917416d11c258ff9c02be71956e33ada39850d54` |
+| `game-pipes*.webp` | `game-pipes.png` | `6336b847d9829d7d9b8b8562afa0eacf52cdcd36c210bd01b6b2038910bbaa71` |
+| `game-foundation*.webp` | `game-foundation.png` | `bb4653c92c714631d096844b6191b5b61871624d4f73b50d977fbf63d8e8354d` |
+| `game-plug*.webp` | `game-plug.png` | `d1a74277dde34e665ecbac20731b54ad879531711bae5495535fd64e5180944a` |
+| `game-roof*.webp` | `game-roof.png` | `de1d70bf5d924d8797de42e700f73a4167bcba806649bd526fd043da6be58dfb` |
+
+The originals are kept outside this repository, in `~/.codex/task-artifacts/neuronook-site-screenshots-20261109/capture/`. They were resized to 480 and 960 pixels wide with Pillow's Lanczos resampling and encoded as WebP at quality 88, as before.
+
+Not replaced: `neighborhood-day*.webp` (checked against a fresh Home launch; the street scene is unchanged), `day-detail*.webp` (an open pull request, #17, already replaces it), and `social.png` (a designed crop of the October night capture).
 
 `favicon.png` is a resized copy of NeuroNook's existing `Assets.xcassets/AppIcon.appiconset/appicon.png` at app source SHA `cb8f10abd7b33488d07da7bfbab413fab77ac974`. `apple-touch-icon.png` is the same icon resized to 180 × 180 with `sips -z 180 180`.
 
