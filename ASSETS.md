@@ -16,14 +16,14 @@ The original 1170 × 2532 PNGs remain in the app's preserved evidence. The websi
 
 ### Daytime captures, November 7, 2026
 
-`neighborhood-day*.webp` and `calendar-current*.webp` are resized copies of screenshots taken from the running app on **November 7, 2026** at about 3 PM Eastern, so the neighborhood scene shows its daytime sky. Source: `weskcode/NeuroNook` at `799d41f4d4206e0fdadf59230193beb090f1264a` (`feature/cloud-batch-20261106-b2`, one commit past `develop`), a Debug simulator build. Device: iPhone 17e, iOS 27.2, English, light appearance, default text size, status bar fixed at 9:41. The app was launched with `--uitesting --uitesting-screenshots -themeMode light -selectedAvatar Face-VeryHappy -selectedAvatarOverlay Hat-HardHatYellow`. That seeds the in-memory mock journal and shows the hard-hat avatar on the profile button at the top left, and nothing was written to the app's stored settings. No app controls, text, scores, or device frames were drawn or replaced. The seeded entries are synthetic and the mock data fills every day of the month, including days after the capture date. The mock journal draws random scores on every launch, so the Home capture is from a launch whose Today entry scored 8 out of 10, which draws the complete house with an intact roof; the other houses in it are random.
+`neighborhood-day*.webp` and, until November 9, 2026, `calendar-current*.webp` are resized copies of screenshots taken from the running app on **November 7, 2026** at about 3 PM Eastern, so the neighborhood scene shows its daytime sky. Source: `weskcode/NeuroNook` at `799d41f4d4206e0fdadf59230193beb090f1264a` (`feature/cloud-batch-20261106-b2`, one commit past `develop`), a Debug simulator build. Device: iPhone 17e, iOS 27.2, English, light appearance, default text size, status bar fixed at 9:41. The app was launched with `--uitesting --uitesting-screenshots -themeMode light -selectedAvatar Face-VeryHappy -selectedAvatarOverlay Hat-HardHatYellow`. That seeds the in-memory mock journal and shows the hard-hat avatar on the profile button at the top left, and nothing was written to the app's stored settings. No app controls, text, scores, or device frames were drawn or replaced. The seeded entries are synthetic and the mock data fills every day of the month, including days after the capture date. The mock journal draws random scores on every launch, so the Home capture is from a launch whose Today entry scored 8 out of 10, which draws the complete house with an intact roof; the other houses in it are random.
 
 | Website asset | Capture | SHA-256 of original PNG |
 | --- | --- | --- |
 | `neighborhood-day*.webp` | `home-day-perfect.png` | `9c60e8ca0a0d63f8624b0fa4f6a04517bd18e08aa52c07740fe3750e15a77926` |
 | `calendar-current*.webp` | `calendar-day.png` | Superseded November 9, 2026 (see below). Earlier original: `6a547946907736db1d520f21a29e6e7aa65ff14e67343dc59223b2f374987fbc` |
 
-The 1170 × 2532 originals are kept outside this repository, in `~/.codex/task-artifacts/neuronook-homepage-20261107/capture/`. They were resized the same way as the October set. The homepage still uses `day-detail*.webp` from October 28, whose neighborhood header shows the night sky, so the page shows both. `neighborhood*.webp`, `calendar*.webp` and `social.png` are the October captures and no longer appear in the homepage markup (`social.png` is still the social preview image).
+The 1170 × 2532 originals are kept outside this repository, in `~/.codex/task-artifacts/neuronook-homepage-20261107/capture/`. `calendar-day.png` there is the original of the replaced Calendar capture. They were resized the same way as the October set. The homepage still uses `day-detail*.webp` from October 28, whose neighborhood header shows the night sky, so the page shows both. `neighborhood*.webp`, `calendar*.webp` and `social.png` are the October captures and no longer appear in the homepage markup (`social.png` is still the social preview image).
 
 ### Mini-game captures, November 7, 2026 (superseded November 9, 2026)
 
@@ -38,7 +38,6 @@ The five files below were replaced on November 9, 2026; this section records how
 | `game-foundation*.webp` | `game-foundation.png` | `b2d0a6a2dc426a47d8cde027962ed4a6da63f33b3cfe18e69595f987fa95a136` |
 | `game-plug*.webp` | `game-plug.png` | `44b505948dfa44824ff298751d95ea1fb0c516804b66bec8f1c1d45162faaba3` |
 | `game-roof*.webp` | `game-roof.png` | `866e551e34b2f084c5c3f5cb3095f5e8715e2ddecaa1d9ffc8c172d8f8636c8f` |
-
 
 ### Refresh, November 9, 2026
 
