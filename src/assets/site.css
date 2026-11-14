@@ -395,6 +395,9 @@ figcaption {
   border:1px solid var(--line);
   border-radius:20px;
 }
+.post-cta > :first-child {
+  margin-top:0;
+}
 .post-cta h2 {
   margin-top:8px;
   margin-bottom:12px;
@@ -403,10 +406,16 @@ figcaption {
   display:flex;
   flex-wrap:wrap;
   align-items:center;
-  gap:16px 24px;
-  margin-top:8px;
+  gap:8px 24px;
+  margin-top:12px;
+}
+.post-cta .store-link {
+  padding:6px 0;
 }
 .cta-secondary {
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
   font-weight:600;
 }
 .faq-item {
@@ -423,6 +432,25 @@ figcaption {
 }
 .faq-item p {
   margin-bottom:0;
+}
+@media(max-width:599px) {
+  .site-header {
+    padding-block:16px;
+    gap:10px 16px;
+  }
+  .home .site-header {
+    padding-block:12px;
+    gap:8px 16px;
+  }
+  nav {
+    gap:0 14px;
+  }
+  nav a {
+    font-size:.88rem;
+  }
+  .home .nav-download {
+    padding-inline:16px;
+  }
 }
 @media(max-width:36em) {
   .prose table,.prose tbody,.prose tr,.prose th,.prose td,
