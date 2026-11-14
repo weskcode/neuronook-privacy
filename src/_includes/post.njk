@@ -5,6 +5,15 @@ isPost: true
 <article class="prose">
   <a class="back-link" href="/blog/">← All notes</a>
   <h1>{{ title }}</h1>
-  <p class="post-date"><time datetime="{{ date | isoDate }}">{{ date | dateLabel }}</time></p>
+  <p class="post-date"><time datetime="{{ date | isoDate }}">{{ date | dateLabel }}</time> · By <a href="/about/" rel="author">{{ site.author.name }}</a></p>
   {{ content | safe }}
+  <aside class="post-cta" aria-label="Try NeuroNook">
+    <p class="eyebrow">Try NeuroNook</p>
+    <h2>A daily check-in with no blank page.</h2>
+    <p>Answer nine quick construction games, build a seven-day neighborhood of houses, and keep your journal private on iPhone and iPad.</p>
+    <div class="post-cta-actions">
+      <a class="store-link" href="{{ site.appStoreUrl }}"><img src="/assets/app-store-badge.svg" width="180" height="60" alt="Download NeuroNook on the App Store" loading="lazy"></a>
+      <a class="cta-secondary" href="/adhd/">Why it works for ADHD →</a>
+    </div>
+  </aside>
 </article>

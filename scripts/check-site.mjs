@@ -4,7 +4,24 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 
 const read = file => readFile(file, 'utf8');
-const pages = ['index.html', 'privacy/index.html', 'support/index.html', 'blog/index.html', 'blog/welcome/index.html', 'changelog/index.html', '404.html'];
+const postPages = [
+  'blog/welcome/index.html',
+  'blog/apps-for-adhd-mood-check-ins/index.html',
+  'blog/why-blank-page-journals-fail-adhd/index.html',
+  'blog/top-youtube-channels-and-podcasts-for-adhd-and-autism/index.html',
+];
+const pages = [
+  'index.html',
+  'adhd/index.html',
+  'about/index.html',
+  'faq/index.html',
+  'privacy/index.html',
+  'support/index.html',
+  'blog/index.html',
+  ...postPages,
+  'changelog/index.html',
+  '404.html',
+];
 const titles = new Set();
 const descriptions = new Set();
 for (const file of pages) {
@@ -16,24 +33,43 @@ for (const file of pages) {
   titles.add(title); descriptions.add(description);
   assert(html.includes('name="apple-itunes-app" content="app-id=6745560129"'), `${file}: smart banner missing`);
   assert(html.includes('rel="canonical" href="https://neuronook.app/'), `${file}: canonical missing`);
+  assert(html.includes('name="author" content="Wesley Keetch"'), `${file}: author meta missing`);
+  assert(html.includes('rel="author" href="https://neuronook.app/about/"'), `${file}: author link missing`);
   for (const tag of ['og:title', 'og:description', 'og:url', 'og:image', 'og:type']) {
     assert(html.includes(`property="${tag}"`), `${file}: ${tag} missing`);
   }
   assert(html.includes('name="twitter:card" content="summary_large_image"'), `${file}: twitter:card missing`);
-  for (const tag of ['twitter:title', 'twitter:description', 'twitter:image']) {
+  for (const tag of ['twitter:title', 'twitter:description', 'twitter:image', 'twitter:creator']) {
     assert(html.includes(`name="${tag}"`), `${file}: ${tag} missing`);
   }
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${file}: one h1 required`);
   assert(!/support@neuronook\.app|gmail\.com/i.test(html), `${file}: outdated or private contact address`);
   const withoutData = html.replace(/<script type="application\/ld\+json">[^<]*<\/script>/g, '');
   assert(!/<script\b|<iframe\b|<embed\b|<style\b|\son\w+=/i.test(withoutData), `${file}: active or inline content`);
-  for (const [, json] of html.matchAll(/<script type="application\/ld\+json">([^<]*)<\/script>/g)) {
-    const types = JSON.parse(json)['@graph'].map(node => node['@type']);
-    assert.deepEqual(types, ['WebSite', 'MobileApplication'], `${file}: structured data graph changed`);
+  const isNoIndex = file === '404.html';
+  assert.equal(html.includes('application/ld+json'), !isNoIndex, `${file}: structured data presence mismatch`);
+  if (!isNoIndex) {
+    const scripts = [...html.matchAll(/<script type="application\/ld\+json">([^<]*)<\/script>/g)];
+    assert.equal(scripts.length, 1, `${file}: expected one JSON-LD script`);
+    const graph = JSON.parse(scripts[0][1])['@graph'];
+    const types = graph.map(node => node['@type']);
+    assert(types.includes('WebSite') && types.includes('Person') && types.includes('MobileApplication'), `${file}: missing base graph nodes`);
+    const person = graph.find(node => node['@type'] === 'Person');
+    assert.equal(person?.name, 'Wesley Keetch', `${file}: Person name mismatch`);
+    if (file !== 'index.html') {
+      assert(types.includes('BreadcrumbList'), `${file}: BreadcrumbList missing`);
+    }
+    if (postPages.includes(file)) {
+      assert(types.includes('BlogPosting'), `${file}: BlogPosting missing`);
+      assert(!html.includes('This is a placeholder.'), `${file}: placeholder copy must be removed`);
+    }
+    if (file === 'faq/index.html') {
+      const faqNode = graph.find(node => node['@type'] === 'FAQPage');
+      assert(faqNode && Array.isArray(faqNode.mainEntity) && faqNode.mainEntity.length >= 5, 'faq: FAQPage mainEntity missing');
+    }
   }
-  assert.equal(html.includes('application/ld+json'), file === 'index.html', `${file}: structured data belongs on the home page only`);
   for (const match of html.matchAll(/<(?:img|link)\b[^>]*(?:src|href)="([^"]+)"/g)) {
-    assert(!/^https?:\/\//.test(match[1]) || match[0].includes('canonical'), `${file}: external asset ${match[1]}`);
+    assert(!/^https?:\/\//.test(match[1]) || match[0].includes('canonical') || match[0].includes('rel="author"'), `${file}: external asset ${match[1]}`);
   }
   for (const match of html.matchAll(/<img\b[^>]*>/g)) assert(/\balt="[^"]*"/.test(match[0]), `${file}: image missing alt`);
   for (const match of html.matchAll(/(?:href|src)="(\/[^"#]*)/g)) {
@@ -68,10 +104,28 @@ for (const route of ['privacy', 'support']) {
 }
 assert((await read('_site/support/index.html')).includes('href="/privacy/"'), 'support privacy link must reach the moved policy');
 const sitemap = await read('_site/sitemap.xml');
-for (const route of ['/', '/privacy/', '/support/', '/blog/', '/blog/welcome/', '/changelog/']) assert(sitemap.includes(`https://neuronook.app${route}</loc>`));
+for (const route of [
+  '/',
+  '/adhd/',
+  '/about/',
+  '/faq/',
+  '/privacy/',
+  '/support/',
+  '/blog/',
+  '/blog/welcome/',
+  '/blog/apps-for-adhd-mood-check-ins/',
+  '/blog/why-blank-page-journals-fail-adhd/',
+  '/blog/top-youtube-channels-and-podcasts-for-adhd-and-autism/',
+  '/changelog/',
+]) {
+  assert(sitemap.includes(`https://neuronook.app${route}</loc><lastmod>`), `sitemap missing route or lastmod: ${route}`);
+}
 assert(!sitemap.includes('404.html'));
 assert((await read('_site/feed.xml')).includes('<guid>https://neuronook.app/blog/welcome/</guid>'));
+assert((await read('_site/feed.xml')).includes('<author>weskcode@duck.com (Wesley Keetch)</author>'));
 assert((await read('_site/robots.txt')).includes('Sitemap: https://neuronook.app/sitemap.xml'));
+const llms = await read('_site/llms.txt');
+assert(llms.includes('Wesley Keetch') && llms.includes('https://neuronook.app/adhd/'), 'llms.txt missing core references');
 assert.equal(await read('_site/_headers'), await read('src/_headers'));
 const securityTxt = await read('_site/.well-known/security.txt');
 assert(securityTxt.includes('Contact: mailto:weskcode@duck.com'), 'security.txt missing contact email');
@@ -85,4 +139,4 @@ const assets = await readdir('_site/assets');
 assert(!assets.some(name => /\.(?:js|mjs)$/.test(name)));
 const pkg = JSON.parse(await read('package.json'));
 assert.deepEqual(Object.keys(pkg.devDependencies), ['@11ty/eleventy']);
-console.log(`PASS: ${pages.length} pages, local links/assets, approved policy/support, legacy redirects, metadata, RSS, sitemap, robots and headers`);
+console.log(`PASS: ${pages.length} pages, local links/assets, approved policy/support, legacy redirects, SEO metadata, JSON-LD, llms.txt, RSS, sitemap, robots and headers`);

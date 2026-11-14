@@ -17,5 +17,8 @@
 /robots.txt
   Access-Control-Allow-Origin: *
 
+/llms.txt
+  Access-Control-Allow-Origin: *
+
 /.well-known/*
   Access-Control-Allow-Origin: *
