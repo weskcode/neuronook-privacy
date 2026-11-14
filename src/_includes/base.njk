@@ -3,37 +3,44 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ title | escape }}{% if title != site.name %} | {{ site.name }}{% endif %}</title>
+  <title>{% if seoTitle %}{{ seoTitle | escape }}{% else %}{{ title | escape }}{% if title != site.name %} | {{ site.name }}{% endif %}{% endif %}</title>
   <meta name="description" content="{{ description | escape }}">
+  <meta name="keywords" content="{{ (keywords or site.defaultKeywords) | escape }}">
+  <meta name="author" content="{{ site.author.name }}">
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="author" href="{{ site.url }}/about/">
   <meta property="og:type" content="{% if isPost %}article{% else %}website{% endif %}">
   <meta property="og:site_name" content="{{ site.name }}">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="{{ title | escape }}">
+  <meta property="og:title" content="{{ (seoTitle or title) | escape }}">
   <meta property="og:description" content="{{ description | escape }}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:image" content="{{ site.url }}/assets/social.png">
-  {% if isPost %}<meta property="article:published_time" content="{{ date | isoDate }}">{% endif %}
+  {% if isPost %}<meta property="article:published_time" content="{{ date | isoDate }}">
+  {% if updated %}<meta property="article:modified_time" content="{{ updated | isoDate }}">{% endif %}
+  <meta property="article:author" content="{{ site.author.name }}">{% endif %}
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="A neighborhood built from daily check-ins in NeuroNook">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ title | escape }}">
+  <meta name="twitter:site" content="{{ site.author.twitterHandle }}">
+  <meta name="twitter:creator" content="{{ site.author.twitterHandle }}">
+  <meta name="twitter:title" content="{{ (seoTitle or title) | escape }}">
   <meta name="twitter:description" content="{{ description | escape }}">
   <meta name="twitter:image" content="{{ site.url }}/assets/social.png">
   <meta name="twitter:image:alt" content="A neighborhood built from daily check-ins in NeuroNook">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#fff9ed" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#28282a" media="(prefers-color-scheme: dark)">
-  <meta name="apple-itunes-app" content="app-id=6745560129">
-  {% if noindex %}<meta name="robots" content="noindex">{% else %}<meta name="robots" content="index, follow, max-image-preview:large">{% endif %}
+  <meta name="apple-itunes-app" content="app-id={{ site.appStoreId }}">
+  {% if noindex %}<meta name="robots" content="noindex">{% else %}<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">{% endif %}
   <link rel="icon" href="/assets/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="stylesheet" href="/assets/site.css">
   <link rel="alternate" type="application/rss+xml" title="NeuroNook notes" href="/feed.xml">
-  {% if home %}<script type="application/ld+json">{{ jsonLd | dump | safe }}</script>
-  {% endif %}</head>
+  {% if not noindex %}<script type="application/ld+json">{{ { page: page, title: (seoTitle or title), description: description, home: home, isPost: isPost, date: date, updated: updated, keywords: keywords, faq: faq } | safeJsonLd | safe }}</script>{% endif %}
+</head>
 <body{% if home %} class="home"{% endif %}>
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="header-band">
@@ -41,7 +48,7 @@
     <a class="wordmark" href="/" aria-label="NeuroNook home"><img src="/assets/favicon.png" alt="" width="36" height="36">NeuroNook</a>
     <nav aria-label="Main navigation">
       {% if home %}<a href="#how-it-works">How it works</a>{% endif %}
-      {% for label, href in [['Privacy', '/privacy/'], ['Support', '/support/'], ['Notes', '/blog/'], ['Changelog', '/changelog/']] %}
+      {% for label, href in [['For ADHD', '/adhd/'], ['Privacy', '/privacy/'], ['Support', '/support/'], ['Notes', '/blog/'], ['Changelog', '/changelog/']] %}
       <a href="{{ href }}"{% if page.url == href or (href == '/blog/' and isPost) %} aria-current="page"{% endif %}>{{ label }}</a>
       {% endfor %}
       {% if home %}<a class="nav-download" href="{{ site.appStoreUrl }}">Download</a>{% endif %}
@@ -50,9 +57,12 @@
   </div>
   <main id="main" class="{% if home %}home-main{% else %}wrap document{% endif %}" tabindex="-1">{{ content | safe }}</main>
   <footer class="site-footer wrap">
-    <p class="footer-note"><strong>Your daily check-in.</strong></p>
+    <div>
+      <p class="footer-note"><strong>Your daily check-in.</strong></p>
+      <p class="footer-byline">Built by <a href="/about/" rel="author">{{ site.author.name }}</a> (<a href="{{ site.author.profiles.github }}" rel="me noopener">@weskcode</a>).</p>
+    </div>
     <div><p>No analytics, cookies or third-party assets.</p>
-    <nav aria-label="Footer navigation"><a href="/privacy/">Privacy</a><a href="/support/">Support</a><a href="/feed.xml">RSS</a></nav>
+    <nav aria-label="Footer navigation"><a href="/about/">About</a><a href="/adhd/">For ADHD</a><a href="/faq/">FAQ</a><a href="/privacy/">Privacy</a><a href="/support/">Support</a><a href="/blog/">Notes</a><a href="/changelog/">Changelog</a><a href="/feed.xml">RSS</a></nav>
     <p class="legal">Apple and the Apple logo are trademarks of Apple Inc. App Store is a service mark of Apple Inc.</p></div>
   </footer>
 </body>

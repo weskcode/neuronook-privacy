@@ -1,6 +1,23 @@
 {
   "name": "NeuroNook",
+  "appName": "NeuroNook: Mood Journal",
   "url": "https://neuronook.app",
   "appStoreUrl": "https://apps.apple.com/us/app/neuronook/id6745560129",
-  "email": "weskcode@duck.com"
+  "appStoreId": "6745560129",
+  "email": "weskcode@duck.com",
+  "updated": "2026-11-13",
+  "defaultKeywords": "NeuroNook, NeuroNook app, mood journal, daily check-in, ADHD app, apps for ADHD, neurodivergent journal, private wellness journal, iPhone mood tracker, iPad wellness app, Wesley Keetch",
+  "author": {
+    "name": "Wesley Keetch",
+    "alternateNames": ["Wes Keetch", "weskcode"],
+    "jobTitle": "Independent iOS & macOS Developer",
+    "twitterHandle": "@weskcode",
+    "location": "New York, NY",
+    "profiles": {
+      "github": "https://github.com/weskcode",
+      "x": "https://x.com/weskcode",
+      "linkedin": "https://www.linkedin.com/in/wesley-keetch/",
+      "littlelink": "https://weskcode.github.io/littlelink/"
+    }
+  }
 }

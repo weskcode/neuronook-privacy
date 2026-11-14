@@ -1,7 +1,9 @@
 ---
 layout: base.njk
 title: Notes
-description: App updates and development notes from NeuroNook.
+description: Guides on ADHD-friendly journaling, daily mood check-ins, privacy, and NeuroNook updates by Wesley Keetch.
+keywords: NeuroNook notes, ADHD journaling blog, apps for ADHD, mood check-in guides, Wesley Keetch
+updated: 2026-11-13
 ---
-<div class="prose"><h1>Notes</h1><p>App updates and development notes. <a href="/feed.xml">Follow via RSS</a>.</p>
+<div class="prose"><h1>Notes</h1><p>Guides on ADHD-friendly journaling, low-friction mood check-ins, and updates from <a href="/about/">Wesley Keetch</a>. <a href="/feed.xml">Follow via RSS</a>.</p>
 <ul class="post-list">{% for post in collections.posts | reverse %}<li><time class="post-date" datetime="{{ post.date | isoDate }}">{{ post.date | dateLabel }}</time><h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2><p>{{ post.data.description }}</p></li>{% endfor %}</ul></div>

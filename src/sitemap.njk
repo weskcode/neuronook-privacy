@@ -4,5 +4,5 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{% for item in collections.all %}{% if item.url and not item.data.noindex %}<url><loc>{{ site.url }}{{ item.url }}</loc></url>{% endif %}{% endfor %}
+{% for item in collections.all %}{% if item.url and not item.data.noindex %}<url><loc>{{ site.url }}{{ item.url }}</loc><lastmod>{{ (item.data.updated or item.data.date or site.updated) | ymdDate }}</lastmod><changefreq>{% if item.url == '/' or item.url == '/blog/' %}weekly{% elif item.data.isPost %}monthly{% else %}monthly{% endif %}</changefreq><priority>{% if item.url == '/' %}1.0{% elif item.url == '/adhd/' or item.url == '/blog/' or item.url == '/faq/' %}0.9{% elif item.url == '/about/' or item.data.isPost %}0.8{% else %}0.6{% endif %}</priority></url>{% endif %}{% endfor %}
 </urlset>
