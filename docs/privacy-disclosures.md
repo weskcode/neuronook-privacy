@@ -4,13 +4,15 @@ The table-first policy condenses the previous policy without changing app behavi
 
 | Original disclosure | Where retained in the concise policy |
 | --- | --- |
-| No accounts, ads or tracking; journal data stays local; sharing is chosen | Introduction and Sharing and deletion |
+| No accounts, ads or tracking; journal data stays local unless iCloud Backup is on; sharing is chosen | Introduction and Sharing and deletion |
 | Answers, scores, notes and custom questions | On your device |
 | Reminder preferences/history and appearance/accessibility settings | On your device |
 | iOS file encryption tied to the passcode for answers, scores, notes and custom questions; settings remain local without a broader encryption claim | On your device |
 | Local reminders/supportive notifications; no notification content or behavior sent | On your device |
 | Location optional; app works without permission; sunrise/sunset uses approximate location locally | Weather controls |
-| Weather off by default; Apple Weather/WeatherKit receives rounded location and network address | Apple Weather table row |
+| Weather off by default and part of NeuroNook Plus; Apple Weather/WeatherKit receives rounded location and network address | Apple Weather table row and Weather controls |
+| iCloud Backup (Plus, off until turned on in Settings → Data Management): copy of all stored data and settings to the private CloudKit database about daily and on Back Up Now; developers cannot read it | Apple iCloud (CloudKit) table row |
+| Backups stop if Plus ends, last backup stays restorable; restore needs the same Apple Account; automatic backups pause on a different iCloud account | Sharing and deletion |
 | About 11 km / 7 mi rounding; about every 30 minutes while open | Apple Weather table row |
 | No stored location; only latest weather reading retained | Weather controls |
 | Disabling Settings → Appearance → Weather stops requests and deletes saved reading | Weather controls |
@@ -23,7 +25,7 @@ The table-first policy condenses the previous policy without changing app behavi
 | Journal notes, answers and scores excluded from external service requests; settings excluded from weather | Paragraph after the table |
 | Apple and RevenueCat have their own privacy policies | Paragraph after the table |
 | Standard iOS sharing/mail only when the user chooses content and recipient | Sharing and deletion |
-| Settings → Data Management / app deletion removes local data; RevenueCat purchase record remains | Sharing and deletion |
+| Settings → Data Management / app deletion removes local data; RevenueCat purchase record and the iCloud Backup remain; Delete all data keeps three iCloud Backup details on the device; Delete iCloud Backup removes the backup | Sharing and deletion |
 | Not directed at children under 13; service exclusions still apply | Children and policy changes |
 | Policy and App Store privacy details updated before new data uses; opt-in | Children and policy changes |
 | Public support alias, without exposing its private forwarding destination | Contact |
