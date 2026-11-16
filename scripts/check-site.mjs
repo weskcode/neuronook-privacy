@@ -9,6 +9,9 @@ const postPages = [
   'blog/apps-for-adhd-mood-check-ins/index.html',
   'blog/why-blank-page-journals-fail-adhd/index.html',
   'blog/top-youtube-channels-and-podcasts-for-adhd-and-autism/index.html',
+  'blog/what-is-neuronook-mood-journal-you-play/index.html',
+  'blog/daily-check-in-questions-to-ask-yourself/index.html',
+  'blog/start-a-mood-journal-when-you-hate-writing/index.html',
 ];
 const pages = [
   'index.html',
@@ -116,6 +119,9 @@ for (const route of [
   '/blog/apps-for-adhd-mood-check-ins/',
   '/blog/why-blank-page-journals-fail-adhd/',
   '/blog/top-youtube-channels-and-podcasts-for-adhd-and-autism/',
+  '/blog/what-is-neuronook-mood-journal-you-play/',
+  '/blog/daily-check-in-questions-to-ask-yourself/',
+  '/blog/start-a-mood-journal-when-you-hate-writing/',
   '/changelog/',
 ]) {
   assert(sitemap.includes(`https://neuronook.app${route}</loc><lastmod>`), `sitemap missing route or lastmod: ${route}`);
