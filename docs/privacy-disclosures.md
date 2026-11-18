@@ -15,7 +15,7 @@ The table-first policy condenses the previous policy without changing app behavi
 | Backups stop if Plus ends, last backup stays restorable; restore needs the same Apple Account; automatic backups pause on a different iCloud account | Sharing and deletion |
 | About 11 km / 7 mi rounding; about every 30 minutes while open | Apple Weather table row |
 | No stored location; only latest weather reading retained | Weather controls |
-| Disabling Settings → Appearance → Weather stops requests and deletes saved reading | Weather controls |
+| Turning off Live Weather in Settings → Weather stops requests and deletes saved reading | Weather controls |
 | Apple statements: forecast-only use, no personally identifiable association or tracking between requests | Weather controls |
 | App links to Apple Weather's other data sources | Weather controls |
 | Optional Plus subscription; Apple Account/payment processing; app receives no name/email/payment details | Apple / App Store table row |
