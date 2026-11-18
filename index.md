@@ -6,7 +6,7 @@ redirect_target: https://neuronook.app/privacy/
 
 # Privacy
 
-_Last updated: November 14, 2026_
+_Last updated: November 17, 2026_
 
 NeuroNook has no accounts, ads or tracking. Your check-ins and journal stay on your device unless you turn on iCloud Backup, which copies them to your own private iCloud. You choose any sharing.
 
@@ -32,7 +32,7 @@ Journal notes, check-in answers and scores are never sent to Apple Weather or Re
 
 Location permission is optional. The app works without it; with permission, approximate location sets sunrise/sunset locally. NeuroNook does not store location. Live Weather, part of NeuroNook Plus, is the only time location leaves the device, and only the latest weather reading is kept.
 
-Turning off **Settings → Appearance → Weather** stops requests and deletes that reading. Apple states that forecast location is not associated with personally identifiable information or tracked between requests, and is used only for forecasts. The app links to Apple Weather’s other data sources.
+Turning off Live Weather in **Settings → Weather** stops requests and deletes that reading. Apple states that forecast location is not associated with personally identifiable information or tracked between requests, and is used only for forecasts. The app links to Apple Weather’s other data sources.
 
 ## Points and decorations (when enabled)
 
