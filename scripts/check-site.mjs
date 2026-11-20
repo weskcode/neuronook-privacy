@@ -46,7 +46,8 @@ for (const file of pages) {
     assert(html.includes(`name="${tag}"`), `${file}: ${tag} missing`);
   }
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${file}: one h1 required`);
-  assert(!/support@neuronook\.app|gmail\.com/i.test(html), `${file}: outdated or private contact address`);
+  assert(!/gmail\.com/i.test(html), `${file}: private contact address`);
+  assert(file === 'support/index.html' || !/support@neuronook\.app/i.test(html), `${file}: support address outside the support page`);
   const withoutData = html.replace(/<script type="application\/ld\+json">[^<]*<\/script>/g, '');
   assert(!/<script\b|<iframe\b|<embed\b|<style\b|\son\w+=/i.test(withoutData), `${file}: active or inline content`);
   const isNoIndex = file === '404.html';
@@ -101,9 +102,10 @@ const legacyLayout = await read('_layouts/legacy.html');
 assert(legacyLayout.includes('{% if site.redirects_enabled %}<meta http-equiv="refresh" content="0; url={{ page.redirect_target }}">'));
 assert(legacyLayout.includes('rel="canonical" href="{{ page.redirect_target }}"'));
 assert((await read('_config.yml')).includes('redirects_enabled: true'), 'legacy redirects must stay enabled after domain activation');
-for (const route of ['privacy', 'support']) {
+for (const [route, email] of [['privacy', 'weskcode@duck.com'], ['support', 'support@neuronook.app']]) {
   const html = await read(`_site/${route}/index.html`);
-  assert(html.includes('href="mailto:weskcode@duck.com"') && html.includes('>weskcode@duck.com</a>'), 'support email must remain visible and usable');
+  assert(html.includes(`href="mailto:${email}"`) && html.includes(`>${email}</a>`), `${route}: contact email must remain visible and usable`);
+  assert(route !== 'support' || !html.includes('href="mailto:weskcode@duck.com"'), 'support: stale contact email');
 }
 assert((await read('_site/support/index.html')).includes('href="/privacy/"'), 'support privacy link must reach the moved policy');
 const sitemap = await read('_site/sitemap.xml');
